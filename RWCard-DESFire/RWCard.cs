@@ -84,7 +84,7 @@ namespace RWCard_DESFire
             try
             {
                 IReaderProvider readerProvider = new PCSCReaderProvider();
-                object[] readers = readerProvider.GetReaderList();
+                object[] readers = readerProvider.GetReaderList() as object[];
                 if (readers == null || readers.Length == 0)
                     throw new Exception("No readers found.");
                 IReaderUnit readerUnit = readerProvider.CreateReaderUnit();
@@ -99,10 +99,9 @@ namespace RWCard_DESFire
                             if (chip != null)
                             {
                                 string cardUIDCSN = chip.ChipIdentifier; //UID/CSN
-                                IProfile profile = chip.Profile;
-                                ILocation location = profile.CreateLocation();
-                                IAccessInfo aiToUse = profile.CreateAccessInfo();
-                                IAccessInfo aiToWrite = profile.CreateAccessInfo();
+                                ILocation location = chip.CreateLocation();
+                                IAccessInfo aiToUse = chip.CreateAccessInfo();
+                                IAccessInfo aiToWrite = chip.CreateAccessInfo();
 
                                 if (chip.GenericType == "DESFire")
                                 {
