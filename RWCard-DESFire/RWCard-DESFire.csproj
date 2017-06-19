@@ -32,6 +32,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Interop.LibLogicalAccess.Com, Version=1.85.0.0, Culture=neutral, PublicKeyToken=7a82f2d3e51d7690, processorArchitecture=MSIL">
+      <HintPath>..\packages\liblogicalaccess.com.1.85.0.1007\lib\Interop.LibLogicalAccess.Com.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -77,17 +82,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="LibLogicalAccess">
-      <Guid>{DFDCDD8C-B13E-465B-8982-B09FC4917EAC}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>85</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
