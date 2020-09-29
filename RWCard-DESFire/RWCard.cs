@@ -1,4 +1,6 @@
 ﻿using LibLogicalAccess;
+using LibLogicalAccess.Card;
+using LibLogicalAccess.Reader;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,28 +20,33 @@ namespace RWCard_DESFire
             InitializeComponent();
         }
 
-        static byte[] GetBytes(string str)
+        static ByteVector GetBytes(string str, int padsize = 0)
         {
             byte[] bytes = new byte[str.Length * sizeof(char)];
             System.Buffer.BlockCopy(str.ToCharArray(), 0, bytes, 0, bytes.Length);
-            return bytes;
+            if (padsize > 0)
+            {
+                Array.Resize(ref bytes, padsize);
+            }
+            return new ByteVector(bytes);
         }
 
-        static string GetString(byte[] bytes)
+        static string GetString(ByteVector vector)
         {
+            var bytes = vector.ToArray();
             char[] chars = new char[bytes.Length / sizeof(char)];
             System.Buffer.BlockCopy(bytes, 0, chars, 0, bytes.Length);
             return new string(chars);
         }
 
-        private string ReadData(string tmp , IChip chip, ILocation location, IAccessInfo aiToUse, IAccessInfo aiToWrite)
+        private string ReadData(string tmp , IChip chip, Location location, AccessInfo aiToUse, AccessInfo aiToWrite)
         {
             string ret = string.Empty;
-            ICardService storage = chip.GetService(CardServiceType.CST_STORAGE);
+            CardService storage = chip.getService(CardServiceType.CST_STORAGE);
 
             if (storage != null)
             {
-                byte[] data = (byte[])(storage as StorageCardService).ReadData(location, aiToWrite, 16, CardBehavior.CB_DEFAULT);
+                var data = (storage as StorageCardService).readData(location, aiToWrite, 16, CardBehavior.CB_DEFAULT);
                 ret = GetString(data);
 
                 MessageBox.Show("Read succeeded", "Info:", MessageBoxButtons.OK);
@@ -49,25 +56,25 @@ namespace RWCard_DESFire
             return ret;
         }
 
-        private string WriteData(string data, IChip chip, ILocation location, IAccessInfo aiToUse, IAccessInfo aiToWrite)
+        private string WriteData(string data, IChip chip, Location location, AccessInfo aiToUse, AccessInfo aiToWrite)
         {
-            ICardService storage = chip.GetService(CardServiceType.CST_STORAGE);
+            CardService storage = chip.getService(CardServiceType.CST_STORAGE);
 
             if (storage != null)
             {
-                if (chip.GenericType == "DESFire")
+                if (chip.getGenericCardType() == "DESFire")
                 {
                     DESFireKey defaultKey = new DESFireKey();
-                    defaultKey.Value = "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00";
+                    defaultKey.fromString("00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00");
 
-                    (chip.Commands as DESFireCommands).SelectApplication(0);
-                    (chip.Commands as DESFireCommands).Authenticate(0, defaultKey);
-                    (chip.Commands as DESFireCommands).Erase();
+                    var dfcmd = chip.getCommands() as DESFireCommands;
+                    dfcmd.selectApplication(0);
+                    dfcmd.authenticate(0, defaultKey);
+                    dfcmd.erase();
                 }
 
-               byte[] arrayData = GetBytes(data);
-               Array.Resize(ref arrayData, 16);
-               (storage as StorageCardService).WriteData(location, aiToUse, aiToWrite, arrayData, 16, CardBehavior.CB_DEFAULT);
+               var arrayData = GetBytes(data, 16);
+               (storage as StorageCardService).writeData(location, aiToUse, aiToWrite, arrayData, CardBehavior.CB_DEFAULT);
 
                MessageBox.Show("Write succeeded", "Info:", MessageBoxButtons.OK);
             }
@@ -77,63 +84,67 @@ namespace RWCard_DESFire
             return string.Empty;
         }
 
-        private string PCSCAction(Func<string, IChip, ILocation, IAccessInfo, IAccessInfo, string> action, string data)
+        private string PCSCAction(Func<string, IChip, Location, AccessInfo, AccessInfo, string> action, string data)
         {
             string ret = null;
 
             try
             {
-                IReaderProvider readerProvider = new PCSCReaderProvider();
-                object[] readers = readerProvider.GetReaderList() as object[];
-                if (readers == null || readers.Length == 0)
+                ReaderProvider readerProvider = PCSCReaderProvider.createInstance();
+                var readers = readerProvider.getReaderList();
+                if (readers == null || readers.Count == 0)
                     throw new Exception("No readers found.");
-                IReaderUnit readerUnit = readerProvider.CreateReaderUnit();
+                ReaderUnit readerUnit = readerProvider.createReaderUnit();
 
-                if (readerUnit.ConnectToReader())
+                if (readerUnit.connectToReader())
                 {
-                    if (readerUnit.WaitInsertion(5000))
+                    if (readerUnit.waitInsertion(5000))
                     {
-                        if (readerUnit.Connect())
+                        if (readerUnit.connect())
                         {
-                            IChip chip = readerUnit.GetSingleChip();
+                            IChip chip = readerUnit.getSingleChip();
                             if (chip != null)
                             {
-                                string cardUIDCSN = chip.ChipIdentifier; //UID/CSN
-                                ILocation location = chip.CreateLocation();
-                                IAccessInfo aiToUse = chip.CreateAccessInfo();
-                                IAccessInfo aiToWrite = chip.CreateAccessInfo();
+                                var cardUIDCSN = chip.getChipIdentifier(); //UID/CSN
+                                Location location = null;
+                                AccessInfo aiToUse = null;
+                                AccessInfo aiToWrite = null;
 
-                                if (chip.GenericType == "DESFire")
+                                if (chip.getGenericCardType() == "DESFire")
                                 {
-                                    IDESFireLocation dlocation = (location as IDESFireLocation);
+                                    location = new DESFireLocation();
+                                    aiToUse = new DESFireAccessInfo();
+                                    aiToWrite = new DESFireAccessInfo();
+
+                                    DESFireLocation dlocation = (location as DESFireLocation);
                                     dlocation.aid = 0x000555;
-                                    dlocation.File = 0;
+                                    dlocation.file = 0;
 
-                                    IDESFireAccessInfo daiToWrite = (aiToWrite as IDESFireAccessInfo);
+                                    DESFireAccessInfo daiToWrite = (aiToWrite as DESFireAccessInfo);
                                     DESFireKey desfireKey2 = new DESFireKey();
-                                    desfireKey2.Value = "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 aa";
+                                    desfireKey2.fromString("00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 aa");
                                     DESFireKey desfireKey1 = new DESFireKey();
-                                    desfireKey1.Value = "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 bb";
+                                    desfireKey1.fromString("00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 bb");
                                     DESFireKey masterKey = new DESFireKey();
-                                    masterKey.Value = "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 cc";
+                                    masterKey.fromString("00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 cc");
 
-                                    daiToWrite.ReadKey = desfireKey2;
-                                    daiToWrite.ReadKeyNo = 2;
+                                    daiToWrite.readKey = desfireKey2;
+                                    daiToWrite.readKeyno = 2;
 
-                                    daiToWrite.WriteKey = desfireKey1;
-                                    daiToWrite.WriteKeyNo = 1;
-                                    daiToWrite.MasterApplicationKey = masterKey;
+                                    daiToWrite.writeKey = desfireKey1;
+                                    daiToWrite.writeKeyno = 1;
+                                    daiToWrite.masterApplicationKey = masterKey;
                                 }
 
                                 ret = action(data, chip, location, aiToUse, aiToWrite);
                             }
-                            readerUnit.Disconnect();
+                            readerUnit.disconnect();
                         }
-                        readerUnit.WaitRemoval(2000);
+                        readerUnit.waitRemoval(2000);
                     }
                     else
                         MessageBox.Show("No card detected !", "Error:", MessageBoxButtons.OK);
-                    readerUnit.DisconnectFromReader();
+                    readerUnit.disconnectFromReader();
                 }
                 else
                     throw new Exception("Impossible to connect to the PCSC reader.");

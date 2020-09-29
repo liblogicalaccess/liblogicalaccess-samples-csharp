@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RWCard_DESFire</RootNamespace>
     <AssemblyName>RWCard-DESFire</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,10 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Interop.LibLogicalAccess.Com, Version=1.85.0.0, Culture=neutral, PublicKeyToken=7a82f2d3e51d7690, processorArchitecture=MSIL">
-      <HintPath>..\packages\liblogicalaccess.com.1.85.0.1007\lib\Interop.LibLogicalAccess.Com.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-      <Private>True</Private>
+    <Reference Include="LibLogicalAccessNet, Version=2.2.1.0, Culture=neutral, PublicKeyToken=7a82f2d3e51d7690, processorArchitecture=MSIL">
+      <HintPath>..\packages\LibLogicalAccessNet.2.2.1-develop-0049\lib\netstandard2.0\LibLogicalAccessNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -68,6 +67,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
