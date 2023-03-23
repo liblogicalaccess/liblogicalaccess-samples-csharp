@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +32,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>RWCard_DESFire.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -45,6 +49,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DESFireCommandsSample.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DESFireCommandsSample.Designer.cs">
+      <DependentUpon>DESFireCommandsSample.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CardServiceTask.cs" />
+    <Compile Include="CardStorageServiceSample.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CardStorageServiceSample.Designer.cs">
+      <DependentUpon>CardStorageServiceSample.cs</DependentUpon>
+    </Compile>
     <Compile Include="RWCard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -53,6 +70,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CardStorageServiceSample.resx">
+      <DependentUpon>CardStorageServiceSample.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DESFireCommandsSample.resx">
+      <DependentUpon>DESFireCommandsSample.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RWCard.resx">
       <DependentUpon>RWCard.cs</DependentUpon>
     </EmbeddedResource>

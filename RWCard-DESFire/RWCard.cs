@@ -1,7 +1,6 @@
 ﻿using LibLogicalAccess;
-using LibLogicalAccess.Card;
-using LibLogicalAccess.Reader;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace RWCard_DESFire
@@ -11,153 +10,98 @@ namespace RWCard_DESFire
         public RWCard()
         {
             InitializeComponent();
+
+            RefreshReaderProviderList();
         }
 
-        static ByteVector GetBytes(string str, int padsize = 0)
+        private void RefreshReaderProviderList()
         {
-            byte[] bytes = new byte[str.Length * sizeof(char)];
-            System.Buffer.BlockCopy(str.ToCharArray(), 0, bytes, 0, bytes.Length);
-            if (padsize > 0)
+            cbReaderProvider.Items.Clear();
+            using (var lib = LibraryManager.getInstance())
             {
-                Array.Resize(ref bytes, padsize);
+                cbReaderProvider.Items.AddRange(lib.getAvailableReaders().ToArray());
             }
-            return new ByteVector(bytes);
+            cbReaderProvider.SelectedItem = "PCSC";
         }
 
-        static string GetString(ByteVector vector)
+        private void RefreshReaderUnitList()
         {
-            var bytes = vector.ToArray();
-            char[] chars = new char[bytes.Length / sizeof(char)];
-            System.Buffer.BlockCopy(bytes, 0, chars, 0, bytes.Length);
-            return new string(chars);
-        }
-
-        private string ReadData(string tmp , IChip chip, Location location, AccessInfo aiToUse, AccessInfo aiToWrite)
-        {
-            string ret = string.Empty;
-            CardService storage = chip.getService(CardServiceType.CST_STORAGE);
-
-            if (storage != null)
+            cbReaderUnit.Items.Clear();
+            if (cbReaderProvider.SelectedIndex > -1)
             {
-                var data = (storage as StorageCardService).readData(location, aiToWrite, 16, CardBehavior.CB_DEFAULT);
-                ret = GetString(data);
-
-                MessageBox.Show("Read succeeded", "Info:", MessageBoxButtons.OK);
-            }
-            else
-                throw new Exception("Impossible to get card service.");
-            return ret;
-        }
-
-        private string WriteData(string data, IChip chip, Location location, AccessInfo aiToUse, AccessInfo aiToWrite)
-        {
-            CardService storage = chip.getService(CardServiceType.CST_STORAGE);
-
-            if (storage != null)
-            {
-                if (chip.getGenericCardType() == "DESFire")
+                using (var lib = LibraryManager.getInstance())
                 {
-                    DESFireKey defaultKey = new DESFireKey();
-                    defaultKey.fromString("00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00");
-
-                    var dfcmd = chip.getCommands() as DESFireCommands;
-                    dfcmd.selectApplication(0);
-                    dfcmd.authenticate(0, defaultKey);
-                    dfcmd.erase();
-                }
-
-               var arrayData = GetBytes(data, 16);
-               (storage as StorageCardService).writeData(location, aiToUse, aiToWrite, arrayData, CardBehavior.CB_DEFAULT);
-
-               MessageBox.Show("Write succeeded", "Info:", MessageBoxButtons.OK);
-            }
-            else
-                throw new Exception("Impossible to get card service.");
-
-            return string.Empty;
-        }
-
-        private string PCSCAction(Func<string, IChip, Location, AccessInfo, AccessInfo, string> action, string data)
-        {
-            string ret = null;
-
-            try
-            {
-                ReaderProvider readerProvider = PCSCReaderProvider.createInstance();
-                var readers = readerProvider.getReaderList();
-                if (readers == null || readers.Count == 0)
-                    throw new Exception("No readers found.");
-                ReaderUnit readerUnit = readerProvider.createReaderUnit();
-
-                if (readerUnit.connectToReader())
-                {
-                    if (readerUnit.waitInsertion(5000))
+                    // We don't keep the instance, we just want to list for now. It will be recreated later.
+                    using (var readerProvider = lib.getReaderProvider(cbReaderProvider.SelectedItem.ToString()))
                     {
-                        if (readerUnit.connect())
+                        if (readerProvider == null)
+                            throw new Exception("Cannot initialize the reader provider instance.");
+
+                        var readers = readerProvider.getReaderList();
+                        foreach (var reader in readers)
                         {
-                            IChip chip = readerUnit.getSingleChip();
-                            if (chip != null)
-                            {
-                                var cardUIDCSN = chip.getChipIdentifier(); //UID/CSN
-                                Location location = null;
-                                AccessInfo aiToUse = null;
-                                AccessInfo aiToWrite = null;
-
-                                if (chip.getGenericCardType() == "DESFire")
-                                {
-                                    location = new DESFireLocation();
-                                    aiToUse = new DESFireAccessInfo();
-                                    aiToWrite = new DESFireAccessInfo();
-
-                                    DESFireLocation dlocation = (location as DESFireLocation);
-                                    dlocation.aid = 0x000555;
-                                    dlocation.file = 0;
-
-                                    DESFireAccessInfo daiToWrite = (aiToWrite as DESFireAccessInfo);
-                                    DESFireKey desfireKey2 = new DESFireKey();
-                                    desfireKey2.fromString("00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 aa");
-                                    DESFireKey desfireKey1 = new DESFireKey();
-                                    desfireKey1.fromString("00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 bb");
-                                    DESFireKey masterKey = new DESFireKey();
-                                    masterKey.fromString("00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 cc");
-
-                                    daiToWrite.readKey = desfireKey2;
-                                    daiToWrite.readKeyno = 2;
-
-                                    daiToWrite.writeKey = desfireKey1;
-                                    daiToWrite.writeKeyno = 1;
-                                    daiToWrite.masterApplicationKey = masterKey;
-                                }
-
-                                ret = action(data, chip, location, aiToUse, aiToWrite);
-                            }
-                            readerUnit.disconnect();
+                            cbReaderUnit.Items.Add(reader.getName());
                         }
-                        readerUnit.waitRemoval(2000);
+                        if (cbReaderUnit.Items.Count > 0)
+                        {
+                            cbReaderUnit.SelectedIndex = 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        protected ReaderConfiguration GetReaderConfiguration()
+        {
+            var readerConfig = new ReaderConfiguration();
+            using (var lib = LibraryManager.getInstance())
+            {
+                if (cbReaderProvider.SelectedIndex > -1)
+                {
+                    var readerProvider = lib.getReaderProvider(cbReaderProvider.SelectedItem.ToString());
+                    readerConfig.setReaderProvider(readerProvider);
+
+                    ReaderUnit readerUnit = null;
+                    if (cbReaderUnit.SelectedIndex > -1)
+                    {
+                        var readerName = cbReaderUnit.SelectedItem.ToString();
+                        // Best to get the instance matching the name from the already existing list
+                        var readers = readerProvider.getReaderList();
+                        readerUnit = readers.Where(r => r.getName() == readerName).FirstOrDefault();
                     }
                     else
-                        MessageBox.Show("No card detected !", "Error:", MessageBoxButtons.OK);
-                    readerUnit.disconnectFromReader();
+                    {
+                        // If no selection, we create a default reader unit instance for this provider and hope for the best
+                        readerUnit = readerProvider.createReaderUnit();
+                    }
+                    readerConfig.setReaderUnit(readerUnit);
                 }
-                else
-                    throw new Exception("Impossible to connect to the PCSC reader.");
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error:", MessageBoxButtons.OK);
-            }
-
-            return ret;
+            return readerConfig;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void cbReaderProvider_SelectedIndexChanged(object sender, EventArgs e)
         {
-            PCSCAction(WriteData, textBox1.Text);
+            RefreshReaderUnitList();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void linkRefreshReaderUnit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            textBox1.Text = PCSCAction(ReadData, string.Empty);
+            RefreshReaderUnitList();
+        }
+
+        private void btnCardStorageService_Click(object sender, EventArgs e)
+        {
+            var sample = new CardStorageServiceSample();
+            sample.ReaderConfig = GetReaderConfiguration();
+            sample.ShowDialog(this);
+        }
+
+        private void btnDESFireCommands_Click(object sender, EventArgs e)
+        {
+            var sample = new DESFireCommandsSample();
+            sample.ReaderConfig = GetReaderConfiguration();
+            sample.ShowDialog(this);
         }
     }
 }

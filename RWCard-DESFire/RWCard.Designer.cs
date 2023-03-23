@@ -29,64 +29,51 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RWCard));
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.gpCardServices = new System.Windows.Forms.GroupBox();
+            this.btnDESFireCommands = new System.Windows.Forms.Button();
+            this.btnCardStorageService = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.gpReader = new System.Windows.Forms.GroupBox();
+            this.lblReaderProvider = new System.Windows.Forms.Label();
+            this.lblReaderUnit = new System.Windows.Forms.Label();
+            this.cbReaderProvider = new System.Windows.Forms.ComboBox();
+            this.cbReaderUnit = new System.Windows.Forms.ComboBox();
+            this.linkRefreshReaderUnit = new System.Windows.Forms.LinkLabel();
+            this.gpCardServices.SuspendLayout();
+            this.gpReader.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // gpCardServices
             // 
-            this.textBox1.Location = new System.Drawing.Point(90, 38);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(183, 20);
-            this.textBox1.TabIndex = 0;
+            this.gpCardServices.Controls.Add(this.btnDESFireCommands);
+            this.gpCardServices.Controls.Add(this.btnCardStorageService);
+            this.gpCardServices.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gpCardServices.Location = new System.Drawing.Point(0, 122);
+            this.gpCardServices.Name = "gpCardServices";
+            this.gpCardServices.Size = new System.Drawing.Size(598, 137);
+            this.gpCardServices.TabIndex = 1;
+            this.gpCardServices.TabStop = false;
+            this.gpCardServices.Text = "Card Services";
             // 
-            // groupBox1
+            // btnDESFireCommands
             // 
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 39);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(429, 220);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Actions";
+            this.btnDESFireCommands.Location = new System.Drawing.Point(311, 34);
+            this.btnDESFireCommands.Name = "btnDESFireCommands";
+            this.btnDESFireCommands.Size = new System.Drawing.Size(155, 71);
+            this.btnDESFireCommands.TabIndex = 3;
+            this.btnDESFireCommands.Text = "DESFire Commands";
+            this.btnDESFireCommands.UseVisualStyleBackColor = true;
+            this.btnDESFireCommands.Click += new System.EventHandler(this.btnDESFireCommands_Click);
             // 
-            // button2
+            // btnCardStorageService
             // 
-            this.button2.Location = new System.Drawing.Point(186, 83);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(126, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Read data from a card.";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(54, 83);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(126, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Write data to a card.";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(51, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Data:";
+            this.btnCardStorageService.Location = new System.Drawing.Point(123, 34);
+            this.btnCardStorageService.Name = "btnCardStorageService";
+            this.btnCardStorageService.Size = new System.Drawing.Size(155, 71);
+            this.btnCardStorageService.TabIndex = 2;
+            this.btnCardStorageService.Text = "Read and Write using Card Storage service";
+            this.btnCardStorageService.UseVisualStyleBackColor = true;
+            this.btnCardStorageService.Click += new System.EventHandler(this.btnCardStorageService_Click);
             // 
             // label2
             // 
@@ -94,34 +81,102 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Top;
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(418, 39);
+            this.label2.Size = new System.Drawing.Size(589, 39);
             this.label2.TabIndex = 2;
             this.label2.Text = resources.GetString("label2.Text");
+            // 
+            // gpReader
+            // 
+            this.gpReader.Controls.Add(this.linkRefreshReaderUnit);
+            this.gpReader.Controls.Add(this.cbReaderUnit);
+            this.gpReader.Controls.Add(this.cbReaderProvider);
+            this.gpReader.Controls.Add(this.lblReaderUnit);
+            this.gpReader.Controls.Add(this.lblReaderProvider);
+            this.gpReader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gpReader.Location = new System.Drawing.Point(0, 39);
+            this.gpReader.Name = "gpReader";
+            this.gpReader.Size = new System.Drawing.Size(598, 83);
+            this.gpReader.TabIndex = 3;
+            this.gpReader.TabStop = false;
+            this.gpReader.Text = "Reader";
+            // 
+            // lblReaderProvider
+            // 
+            this.lblReaderProvider.AutoSize = true;
+            this.lblReaderProvider.Location = new System.Drawing.Point(74, 22);
+            this.lblReaderProvider.Name = "lblReaderProvider";
+            this.lblReaderProvider.Size = new System.Drawing.Size(87, 13);
+            this.lblReaderProvider.TabIndex = 0;
+            this.lblReaderProvider.Text = "Reader Provider:";
+            // 
+            // lblReaderUnit
+            // 
+            this.lblReaderUnit.AutoSize = true;
+            this.lblReaderUnit.Location = new System.Drawing.Point(94, 55);
+            this.lblReaderUnit.Name = "lblReaderUnit";
+            this.lblReaderUnit.Size = new System.Drawing.Size(67, 13);
+            this.lblReaderUnit.TabIndex = 1;
+            this.lblReaderUnit.Text = "Reader Unit:";
+            // 
+            // cbReaderProvider
+            // 
+            this.cbReaderProvider.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbReaderProvider.FormattingEnabled = true;
+            this.cbReaderProvider.Location = new System.Drawing.Point(167, 19);
+            this.cbReaderProvider.Name = "cbReaderProvider";
+            this.cbReaderProvider.Size = new System.Drawing.Size(320, 21);
+            this.cbReaderProvider.TabIndex = 2;
+            this.cbReaderProvider.SelectedIndexChanged += new System.EventHandler(this.cbReaderProvider_SelectedIndexChanged);
+            // 
+            // cbReaderUnit
+            // 
+            this.cbReaderUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbReaderUnit.FormattingEnabled = true;
+            this.cbReaderUnit.Location = new System.Drawing.Point(167, 52);
+            this.cbReaderUnit.Name = "cbReaderUnit";
+            this.cbReaderUnit.Size = new System.Drawing.Size(320, 21);
+            this.cbReaderUnit.TabIndex = 3;
+            // 
+            // linkRefreshReaderUnit
+            // 
+            this.linkRefreshReaderUnit.AutoSize = true;
+            this.linkRefreshReaderUnit.Location = new System.Drawing.Point(493, 55);
+            this.linkRefreshReaderUnit.Name = "linkRefreshReaderUnit";
+            this.linkRefreshReaderUnit.Size = new System.Drawing.Size(44, 13);
+            this.linkRefreshReaderUnit.TabIndex = 4;
+            this.linkRefreshReaderUnit.TabStop = true;
+            this.linkRefreshReaderUnit.Text = "Refresh";
+            this.linkRefreshReaderUnit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkRefreshReaderUnit_LinkClicked);
             // 
             // RWCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(429, 259);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(598, 259);
+            this.Controls.Add(this.gpCardServices);
+            this.Controls.Add(this.gpReader);
             this.Controls.Add(this.label2);
             this.Name = "RWCard";
             this.Text = "RWCard DESFire";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gpCardServices.ResumeLayout(false);
+            this.gpReader.ResumeLayout(false);
+            this.gpReader.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox gpCardServices;
+        private System.Windows.Forms.Button btnCardStorageService;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnDESFireCommands;
+        private System.Windows.Forms.GroupBox gpReader;
+        private System.Windows.Forms.Label lblReaderUnit;
+        private System.Windows.Forms.Label lblReaderProvider;
+        private System.Windows.Forms.ComboBox cbReaderProvider;
+        private System.Windows.Forms.ComboBox cbReaderUnit;
+        private System.Windows.Forms.LinkLabel linkRefreshReaderUnit;
     }
 }
 
