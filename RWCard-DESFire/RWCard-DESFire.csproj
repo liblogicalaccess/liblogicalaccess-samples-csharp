@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthWithSAMSample.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AuthWithSAMSample.Designer.cs">
+      <DependentUpon>AuthWithSAMSample.cs</DependentUpon>
+    </Compile>
     <Compile Include="DESFireCommandsSample.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,21 @@
     <Compile Include="CardStorageServiceSample.Designer.cs">
       <DependentUpon>CardStorageServiceSample.cs</DependentUpon>
     </Compile>
+    <Compile Include="DESFireParametersControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DESFireParametersControl.Designer.cs">
+      <DependentUpon>DESFireParametersControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LLASample.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReaderSelectionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReaderSelectionControl.Designer.cs">
+      <DependentUpon>ReaderSelectionControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="RWCard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,11 +91,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AuthWithSAMSample.resx">
+      <DependentUpon>AuthWithSAMSample.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CardStorageServiceSample.resx">
       <DependentUpon>CardStorageServiceSample.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DESFireCommandsSample.resx">
       <DependentUpon>DESFireCommandsSample.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DESFireParametersControl.resx">
+      <DependentUpon>DESFireParametersControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReaderSelectionControl.resx">
+      <DependentUpon>ReaderSelectionControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RWCard.resx">
       <DependentUpon>RWCard.cs</DependentUpon>

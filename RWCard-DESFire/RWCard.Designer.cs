@@ -30,21 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RWCard));
             this.gpCardServices = new System.Windows.Forms.GroupBox();
+            this.btnAuthWithSAM = new System.Windows.Forms.Button();
             this.btnDESFireCommands = new System.Windows.Forms.Button();
             this.btnCardStorageService = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.gpReader = new System.Windows.Forms.GroupBox();
-            this.lblReaderProvider = new System.Windows.Forms.Label();
-            this.lblReaderUnit = new System.Windows.Forms.Label();
-            this.cbReaderProvider = new System.Windows.Forms.ComboBox();
-            this.cbReaderUnit = new System.Windows.Forms.ComboBox();
-            this.linkRefreshReaderUnit = new System.Windows.Forms.LinkLabel();
+            this.readerSelectionControl = new RWCard_DESFire.ReaderSelectionControl();
             this.gpCardServices.SuspendLayout();
             this.gpReader.SuspendLayout();
             this.SuspendLayout();
             // 
             // gpCardServices
             // 
+            this.gpCardServices.Controls.Add(this.btnAuthWithSAM);
             this.gpCardServices.Controls.Add(this.btnDESFireCommands);
             this.gpCardServices.Controls.Add(this.btnCardStorageService);
             this.gpCardServices.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -55,9 +53,19 @@
             this.gpCardServices.TabStop = false;
             this.gpCardServices.Text = "Card Services";
             // 
+            // btnAuthWithSAM
+            // 
+            this.btnAuthWithSAM.Location = new System.Drawing.Point(384, 34);
+            this.btnAuthWithSAM.Name = "btnAuthWithSAM";
+            this.btnAuthWithSAM.Size = new System.Drawing.Size(155, 71);
+            this.btnAuthWithSAM.TabIndex = 4;
+            this.btnAuthWithSAM.Text = "Authenticate on DESFire using a SAM";
+            this.btnAuthWithSAM.UseVisualStyleBackColor = true;
+            this.btnAuthWithSAM.Click += new System.EventHandler(this.btnAuthWithSAM_Click);
+            // 
             // btnDESFireCommands
             // 
-            this.btnDESFireCommands.Location = new System.Drawing.Point(311, 34);
+            this.btnDESFireCommands.Location = new System.Drawing.Point(223, 34);
             this.btnDESFireCommands.Name = "btnDESFireCommands";
             this.btnDESFireCommands.Size = new System.Drawing.Size(155, 71);
             this.btnDESFireCommands.TabIndex = 3;
@@ -67,7 +75,7 @@
             // 
             // btnCardStorageService
             // 
-            this.btnCardStorageService.Location = new System.Drawing.Point(123, 34);
+            this.btnCardStorageService.Location = new System.Drawing.Point(62, 34);
             this.btnCardStorageService.Name = "btnCardStorageService";
             this.btnCardStorageService.Size = new System.Drawing.Size(155, 71);
             this.btnCardStorageService.TabIndex = 2;
@@ -87,11 +95,7 @@
             // 
             // gpReader
             // 
-            this.gpReader.Controls.Add(this.linkRefreshReaderUnit);
-            this.gpReader.Controls.Add(this.cbReaderUnit);
-            this.gpReader.Controls.Add(this.cbReaderProvider);
-            this.gpReader.Controls.Add(this.lblReaderUnit);
-            this.gpReader.Controls.Add(this.lblReaderProvider);
+            this.gpReader.Controls.Add(this.readerSelectionControl);
             this.gpReader.Dock = System.Windows.Forms.DockStyle.Top;
             this.gpReader.Location = new System.Drawing.Point(0, 39);
             this.gpReader.Name = "gpReader";
@@ -100,53 +104,13 @@
             this.gpReader.TabStop = false;
             this.gpReader.Text = "Reader";
             // 
-            // lblReaderProvider
+            // readerSelectionControl
             // 
-            this.lblReaderProvider.AutoSize = true;
-            this.lblReaderProvider.Location = new System.Drawing.Point(74, 22);
-            this.lblReaderProvider.Name = "lblReaderProvider";
-            this.lblReaderProvider.Size = new System.Drawing.Size(87, 13);
-            this.lblReaderProvider.TabIndex = 0;
-            this.lblReaderProvider.Text = "Reader Provider:";
-            // 
-            // lblReaderUnit
-            // 
-            this.lblReaderUnit.AutoSize = true;
-            this.lblReaderUnit.Location = new System.Drawing.Point(94, 55);
-            this.lblReaderUnit.Name = "lblReaderUnit";
-            this.lblReaderUnit.Size = new System.Drawing.Size(67, 13);
-            this.lblReaderUnit.TabIndex = 1;
-            this.lblReaderUnit.Text = "Reader Unit:";
-            // 
-            // cbReaderProvider
-            // 
-            this.cbReaderProvider.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbReaderProvider.FormattingEnabled = true;
-            this.cbReaderProvider.Location = new System.Drawing.Point(167, 19);
-            this.cbReaderProvider.Name = "cbReaderProvider";
-            this.cbReaderProvider.Size = new System.Drawing.Size(320, 21);
-            this.cbReaderProvider.TabIndex = 2;
-            this.cbReaderProvider.SelectedIndexChanged += new System.EventHandler(this.cbReaderProvider_SelectedIndexChanged);
-            // 
-            // cbReaderUnit
-            // 
-            this.cbReaderUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbReaderUnit.FormattingEnabled = true;
-            this.cbReaderUnit.Location = new System.Drawing.Point(167, 52);
-            this.cbReaderUnit.Name = "cbReaderUnit";
-            this.cbReaderUnit.Size = new System.Drawing.Size(320, 21);
-            this.cbReaderUnit.TabIndex = 3;
-            // 
-            // linkRefreshReaderUnit
-            // 
-            this.linkRefreshReaderUnit.AutoSize = true;
-            this.linkRefreshReaderUnit.Location = new System.Drawing.Point(493, 55);
-            this.linkRefreshReaderUnit.Name = "linkRefreshReaderUnit";
-            this.linkRefreshReaderUnit.Size = new System.Drawing.Size(44, 13);
-            this.linkRefreshReaderUnit.TabIndex = 4;
-            this.linkRefreshReaderUnit.TabStop = true;
-            this.linkRefreshReaderUnit.Text = "Refresh";
-            this.linkRefreshReaderUnit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkRefreshReaderUnit_LinkClicked);
+            this.readerSelectionControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.readerSelectionControl.Location = new System.Drawing.Point(3, 16);
+            this.readerSelectionControl.Name = "readerSelectionControl";
+            this.readerSelectionControl.Size = new System.Drawing.Size(592, 64);
+            this.readerSelectionControl.TabIndex = 0;
             // 
             // RWCard
             // 
@@ -160,7 +124,6 @@
             this.Text = "RWCard DESFire";
             this.gpCardServices.ResumeLayout(false);
             this.gpReader.ResumeLayout(false);
-            this.gpReader.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,11 +135,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnDESFireCommands;
         private System.Windows.Forms.GroupBox gpReader;
-        private System.Windows.Forms.Label lblReaderUnit;
-        private System.Windows.Forms.Label lblReaderProvider;
-        private System.Windows.Forms.ComboBox cbReaderProvider;
-        private System.Windows.Forms.ComboBox cbReaderUnit;
-        private System.Windows.Forms.LinkLabel linkRefreshReaderUnit;
+        private System.Windows.Forms.Button btnAuthWithSAM;
+        private ReaderSelectionControl readerSelectionControl;
     }
 }
 

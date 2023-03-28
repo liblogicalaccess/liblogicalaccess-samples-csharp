@@ -5,14 +5,12 @@ using System.Windows.Forms;
 
 namespace RWCard_DESFire
 {
-    public partial class CardStorageServiceSample : Form
+    public partial class CardStorageServiceSample : LLASample
     {
         public CardStorageServiceSample()
         {
             InitializeComponent();
         }
-
-        public ReaderConfiguration ReaderConfig { get; set; }
 
         static ByteVector GetBytes(string str, int padsize = 0)
         {
