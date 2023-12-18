@@ -29,104 +29,156 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RWCard));
-            this.gpCardServices = new System.Windows.Forms.GroupBox();
-            this.btnAuthWithSAM = new System.Windows.Forms.Button();
-            this.btnDESFireCommands = new System.Windows.Forms.Button();
-            this.btnCardStorageService = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.gpReader = new System.Windows.Forms.GroupBox();
-            this.readerSelectionControl = new RWCard_DESFire.ReaderSelectionControl();
-            this.gpCardServices.SuspendLayout();
-            this.gpReader.SuspendLayout();
-            this.SuspendLayout();
+            gpCardServices = new System.Windows.Forms.GroupBox();
+            btnAuthWithSAM = new System.Windows.Forms.Button();
+            btnDESFireCommands = new System.Windows.Forms.Button();
+            btnCardStorageService = new System.Windows.Forms.Button();
+            label2 = new System.Windows.Forms.Label();
+            gpReader = new System.Windows.Forms.GroupBox();
+            readerSelectionControl = new ReaderSelectionControl();
+            gpAbout = new System.Windows.Forms.GroupBox();
+            label1 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            gpCardServices.SuspendLayout();
+            gpReader.SuspendLayout();
+            gpAbout.SuspendLayout();
+            SuspendLayout();
             // 
             // gpCardServices
             // 
-            this.gpCardServices.Controls.Add(this.btnAuthWithSAM);
-            this.gpCardServices.Controls.Add(this.btnDESFireCommands);
-            this.gpCardServices.Controls.Add(this.btnCardStorageService);
-            this.gpCardServices.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gpCardServices.Location = new System.Drawing.Point(0, 122);
-            this.gpCardServices.Name = "gpCardServices";
-            this.gpCardServices.Size = new System.Drawing.Size(598, 137);
-            this.gpCardServices.TabIndex = 1;
-            this.gpCardServices.TabStop = false;
-            this.gpCardServices.Text = "Card Services";
+            gpCardServices.Controls.Add(btnAuthWithSAM);
+            gpCardServices.Controls.Add(btnDESFireCommands);
+            gpCardServices.Controls.Add(btnCardStorageService);
+            gpCardServices.Dock = System.Windows.Forms.DockStyle.Fill;
+            gpCardServices.Location = new System.Drawing.Point(0, 235);
+            gpCardServices.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            gpCardServices.Name = "gpCardServices";
+            gpCardServices.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            gpCardServices.Size = new System.Drawing.Size(997, 243);
+            gpCardServices.TabIndex = 1;
+            gpCardServices.TabStop = false;
+            gpCardServices.Text = "Card Services";
             // 
             // btnAuthWithSAM
             // 
-            this.btnAuthWithSAM.Location = new System.Drawing.Point(384, 34);
-            this.btnAuthWithSAM.Name = "btnAuthWithSAM";
-            this.btnAuthWithSAM.Size = new System.Drawing.Size(155, 71);
-            this.btnAuthWithSAM.TabIndex = 4;
-            this.btnAuthWithSAM.Text = "Authenticate on DESFire using a SAM";
-            this.btnAuthWithSAM.UseVisualStyleBackColor = true;
-            this.btnAuthWithSAM.Click += new System.EventHandler(this.btnAuthWithSAM_Click);
+            btnAuthWithSAM.Location = new System.Drawing.Point(640, 65);
+            btnAuthWithSAM.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            btnAuthWithSAM.Name = "btnAuthWithSAM";
+            btnAuthWithSAM.Size = new System.Drawing.Size(258, 137);
+            btnAuthWithSAM.TabIndex = 4;
+            btnAuthWithSAM.Text = "Authenticate on DESFire using a SAM";
+            btnAuthWithSAM.UseVisualStyleBackColor = true;
+            btnAuthWithSAM.Click += btnAuthWithSAM_Click;
             // 
             // btnDESFireCommands
             // 
-            this.btnDESFireCommands.Location = new System.Drawing.Point(223, 34);
-            this.btnDESFireCommands.Name = "btnDESFireCommands";
-            this.btnDESFireCommands.Size = new System.Drawing.Size(155, 71);
-            this.btnDESFireCommands.TabIndex = 3;
-            this.btnDESFireCommands.Text = "DESFire Commands";
-            this.btnDESFireCommands.UseVisualStyleBackColor = true;
-            this.btnDESFireCommands.Click += new System.EventHandler(this.btnDESFireCommands_Click);
+            btnDESFireCommands.Location = new System.Drawing.Point(372, 65);
+            btnDESFireCommands.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            btnDESFireCommands.Name = "btnDESFireCommands";
+            btnDESFireCommands.Size = new System.Drawing.Size(258, 137);
+            btnDESFireCommands.TabIndex = 3;
+            btnDESFireCommands.Text = "DESFire Commands";
+            btnDESFireCommands.UseVisualStyleBackColor = true;
+            btnDESFireCommands.Click += btnDESFireCommands_Click;
             // 
             // btnCardStorageService
             // 
-            this.btnCardStorageService.Location = new System.Drawing.Point(62, 34);
-            this.btnCardStorageService.Name = "btnCardStorageService";
-            this.btnCardStorageService.Size = new System.Drawing.Size(155, 71);
-            this.btnCardStorageService.TabIndex = 2;
-            this.btnCardStorageService.Text = "Read and Write using Card Storage service";
-            this.btnCardStorageService.UseVisualStyleBackColor = true;
-            this.btnCardStorageService.Click += new System.EventHandler(this.btnCardStorageService_Click);
+            btnCardStorageService.Location = new System.Drawing.Point(103, 65);
+            btnCardStorageService.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            btnCardStorageService.Name = "btnCardStorageService";
+            btnCardStorageService.Size = new System.Drawing.Size(258, 137);
+            btnCardStorageService.TabIndex = 2;
+            btnCardStorageService.Text = "Read and Write using Card Storage service";
+            btnCardStorageService.UseVisualStyleBackColor = true;
+            btnCardStorageService.Click += btnCardStorageService_Click;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(589, 39);
-            this.label2.TabIndex = 2;
-            this.label2.Text = resources.GetString("label2.Text");
+            label2.AutoSize = true;
+            label2.Dock = System.Windows.Forms.DockStyle.Top;
+            label2.Location = new System.Drawing.Point(0, 0);
+            label2.Margin = new System.Windows.Forms.Padding(5);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(980, 75);
+            label2.TabIndex = 2;
+            label2.Text = resources.GetString("label2.Text");
             // 
             // gpReader
             // 
-            this.gpReader.Controls.Add(this.readerSelectionControl);
-            this.gpReader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gpReader.Location = new System.Drawing.Point(0, 39);
-            this.gpReader.Name = "gpReader";
-            this.gpReader.Size = new System.Drawing.Size(598, 83);
-            this.gpReader.TabIndex = 3;
-            this.gpReader.TabStop = false;
-            this.gpReader.Text = "Reader";
+            gpReader.Controls.Add(readerSelectionControl);
+            gpReader.Dock = System.Windows.Forms.DockStyle.Top;
+            gpReader.Location = new System.Drawing.Point(0, 75);
+            gpReader.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            gpReader.Name = "gpReader";
+            gpReader.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            gpReader.Size = new System.Drawing.Size(997, 160);
+            gpReader.TabIndex = 3;
+            gpReader.TabStop = false;
+            gpReader.Text = "Reader";
             // 
             // readerSelectionControl
             // 
-            this.readerSelectionControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.readerSelectionControl.Location = new System.Drawing.Point(3, 16);
-            this.readerSelectionControl.Name = "readerSelectionControl";
-            this.readerSelectionControl.Size = new System.Drawing.Size(592, 64);
-            this.readerSelectionControl.TabIndex = 0;
+            readerSelectionControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            readerSelectionControl.Location = new System.Drawing.Point(5, 30);
+            readerSelectionControl.Margin = new System.Windows.Forms.Padding(8, 12, 8, 12);
+            readerSelectionControl.Name = "readerSelectionControl";
+            readerSelectionControl.Size = new System.Drawing.Size(987, 124);
+            readerSelectionControl.TabIndex = 0;
+            // 
+            // gpAbout
+            // 
+            gpAbout.Controls.Add(label1);
+            gpAbout.Controls.Add(label3);
+            gpAbout.Dock = System.Windows.Forms.DockStyle.Bottom;
+            gpAbout.Location = new System.Drawing.Point(0, 478);
+            gpAbout.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            gpAbout.Name = "gpAbout";
+            gpAbout.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            gpAbout.Size = new System.Drawing.Size(997, 95);
+            gpAbout.TabIndex = 4;
+            gpAbout.TabStop = false;
+            gpAbout.Text = "About";
+            // 
+            // label1
+            // 
+            label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            label1.Location = new System.Drawing.Point(5, 30);
+            label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(698, 59);
+            label1.TabIndex = 3;
+            label1.Text = "Developed by LEOSAC for LibLogicalAccess community.\r\nMIT licensed.";
+            label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Dock = System.Windows.Forms.DockStyle.Right;
+            label3.Location = new System.Drawing.Point(703, 30);
+            label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(289, 50);
+            label3.TabIndex = 4;
+            label3.Text = "https://github.com/liblogicalaccess\r\nhttps://leosac.com";
             // 
             // RWCard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(598, 259);
-            this.Controls.Add(this.gpCardServices);
-            this.Controls.Add(this.gpReader);
-            this.Controls.Add(this.label2);
-            this.Name = "RWCard";
-            this.Text = "RWCard DESFire";
-            this.gpCardServices.ResumeLayout(false);
-            this.gpReader.ResumeLayout(false);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(997, 573);
+            Controls.Add(gpCardServices);
+            Controls.Add(gpAbout);
+            Controls.Add(gpReader);
+            Controls.Add(label2);
+            Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            Name = "RWCard";
+            Text = "RWCard DESFire";
+            gpCardServices.ResumeLayout(false);
+            gpReader.ResumeLayout(false);
+            gpAbout.ResumeLayout(false);
+            gpAbout.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -137,6 +189,9 @@
         private System.Windows.Forms.GroupBox gpReader;
         private System.Windows.Forms.Button btnAuthWithSAM;
         private ReaderSelectionControl readerSelectionControl;
+        private System.Windows.Forms.GroupBox gpAbout;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
     }
 }
 
