@@ -67,7 +67,7 @@ namespace RWCard_DESFire
                         readerUnit.waitRemoval(2000);
                     }
                     else
-                        MessageBox.Show("No card detected !", "Error:", MessageBoxButtons.OK);
+                        MessageBox.Show("No card detected !", Properties.Resources.Error, MessageBoxButtons.OK);
                     readerUnit.disconnectFromReader();
                 }
                 else
@@ -75,7 +75,7 @@ namespace RWCard_DESFire
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error:", MessageBoxButtons.OK);
+                MessageBox.Show(ex.Message, Properties.Resources.Error, MessageBoxButtons.OK);
             }
             return ret;
         }

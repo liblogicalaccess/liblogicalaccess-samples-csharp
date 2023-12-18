@@ -1,148 +1,56 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BBA4D945-42EB-4A3C-BA6D-EB2556DCB233}</ProjectGuid>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RWCard_DESFire</RootNamespace>
-    <AssemblyName>RWCard-DESFire</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>RWCard_DESFire.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AuthWithSAMSample.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AuthWithSAMSample.Designer.cs">
-      <DependentUpon>AuthWithSAMSample.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DESFireCommandsSample.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DESFireCommandsSample.Designer.cs">
-      <DependentUpon>DESFireCommandsSample.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CardServiceTask.cs" />
-    <Compile Include="CardStorageServiceSample.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CardStorageServiceSample.Designer.cs">
-      <DependentUpon>CardStorageServiceSample.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DESFireParametersControl.cs">
+    <Compile Update="KeyParametersControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DESFireParametersControl.Designer.cs">
-      <DependentUpon>DESFireParametersControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LLASample.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ReaderSelectionControl.cs">
+    <Compile Update="DESFireParametersControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ReaderSelectionControl.Designer.cs">
-      <DependentUpon>ReaderSelectionControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RWCard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RWCard.Designer.cs">
-      <DependentUpon>RWCard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AuthWithSAMSample.resx">
-      <DependentUpon>AuthWithSAMSample.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CardStorageServiceSample.resx">
-      <DependentUpon>CardStorageServiceSample.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DESFireCommandsSample.resx">
-      <DependentUpon>DESFireCommandsSample.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DESFireParametersControl.resx">
-      <DependentUpon>DESFireParametersControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReaderSelectionControl.resx">
-      <DependentUpon>ReaderSelectionControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RWCard.resx">
-      <DependentUpon>RWCard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
+    <Compile Update="ReaderSelectionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LibLogicalAccessNetCE">
       <Version>2.5.0</Version>
     </PackageReference>
+    <PackageReference Include="LibLogicalAccessNetCE.Native">
+      <Version>2.5.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
 </Project>

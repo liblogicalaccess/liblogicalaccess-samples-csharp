@@ -28,176 +28,121 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tbxApplicationId = new System.Windows.Forms.TextBox();
-            this.lblApplicationId = new System.Windows.Forms.Label();
-            this.nupFileNo = new System.Windows.Forms.NumericUpDown();
-            this.lblFileNo = new System.Windows.Forms.Label();
-            this.cbKeyType = new System.Windows.Forms.ComboBox();
-            this.lblKeyType = new System.Windows.Forms.Label();
-            this.tbxKeyValue = new System.Windows.Forms.TextBox();
-            this.lblKeyValue = new System.Windows.Forms.Label();
-            this.nupKeyNo = new System.Windows.Forms.NumericUpDown();
-            this.lblKeyNo = new System.Windows.Forms.Label();
-            this.nupTimeout = new System.Windows.Forms.NumericUpDown();
-            this.lblTimeout = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.nupFileNo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nupKeyNo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nupTimeout)).BeginInit();
-            this.SuspendLayout();
+            tbxApplicationId = new System.Windows.Forms.TextBox();
+            lblApplicationId = new System.Windows.Forms.Label();
+            nupFileNo = new System.Windows.Forms.NumericUpDown();
+            lblFileNo = new System.Windows.Forms.Label();
+            nupKeyNo = new System.Windows.Forms.NumericUpDown();
+            lblKeyNo = new System.Windows.Forms.Label();
+            nupTimeout = new System.Windows.Forms.NumericUpDown();
+            lblTimeout = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)nupFileNo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nupKeyNo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nupTimeout).BeginInit();
+            SuspendLayout();
             // 
             // tbxApplicationId
             // 
-            this.tbxApplicationId.Location = new System.Drawing.Point(85, 29);
-            this.tbxApplicationId.MaxLength = 6;
-            this.tbxApplicationId.Name = "tbxApplicationId";
-            this.tbxApplicationId.Size = new System.Drawing.Size(100, 20);
-            this.tbxApplicationId.TabIndex = 23;
-            this.tbxApplicationId.Text = "000000";
-            this.tbxApplicationId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            tbxApplicationId.Location = new System.Drawing.Point(142, 56);
+            tbxApplicationId.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            tbxApplicationId.MaxLength = 6;
+            tbxApplicationId.Name = "tbxApplicationId";
+            tbxApplicationId.Size = new System.Drawing.Size(164, 31);
+            tbxApplicationId.TabIndex = 23;
+            tbxApplicationId.Text = "000000";
+            tbxApplicationId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblApplicationId
             // 
-            this.lblApplicationId.AutoSize = true;
-            this.lblApplicationId.Location = new System.Drawing.Point(5, 32);
-            this.lblApplicationId.Name = "lblApplicationId";
-            this.lblApplicationId.Size = new System.Drawing.Size(74, 13);
-            this.lblApplicationId.TabIndex = 22;
-            this.lblApplicationId.Text = "Application Id:";
+            lblApplicationId.AutoSize = true;
+            lblApplicationId.Location = new System.Drawing.Point(8, 62);
+            lblApplicationId.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            lblApplicationId.Name = "lblApplicationId";
+            lblApplicationId.Size = new System.Drawing.Size(127, 25);
+            lblApplicationId.TabIndex = 22;
+            lblApplicationId.Text = "Application Id:";
             // 
             // nupFileNo
             // 
-            this.nupFileNo.Location = new System.Drawing.Point(85, 58);
-            this.nupFileNo.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.nupFileNo.Name = "nupFileNo";
-            this.nupFileNo.Size = new System.Drawing.Size(87, 20);
-            this.nupFileNo.TabIndex = 21;
-            this.nupFileNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            nupFileNo.Location = new System.Drawing.Point(568, 56);
+            nupFileNo.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            nupFileNo.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
+            nupFileNo.Name = "nupFileNo";
+            nupFileNo.Size = new System.Drawing.Size(145, 31);
+            nupFileNo.TabIndex = 21;
+            nupFileNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblFileNo
             // 
-            this.lblFileNo.AutoSize = true;
-            this.lblFileNo.Location = new System.Drawing.Point(36, 60);
-            this.lblFileNo.Name = "lblFileNo";
-            this.lblFileNo.Size = new System.Drawing.Size(43, 13);
-            this.lblFileNo.TabIndex = 20;
-            this.lblFileNo.Text = "File No:";
-            // 
-            // cbKeyType
-            // 
-            this.cbKeyType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbKeyType.FormattingEnabled = true;
-            this.cbKeyType.Items.AddRange(new object[] {
-            "DES",
-            "3K3DES",
-            "AES"});
-            this.cbKeyType.Location = new System.Drawing.Point(341, 55);
-            this.cbKeyType.Name = "cbKeyType";
-            this.cbKeyType.Size = new System.Drawing.Size(121, 21);
-            this.cbKeyType.TabIndex = 19;
-            // 
-            // lblKeyType
-            // 
-            this.lblKeyType.AutoSize = true;
-            this.lblKeyType.Location = new System.Drawing.Point(280, 60);
-            this.lblKeyType.Name = "lblKeyType";
-            this.lblKeyType.Size = new System.Drawing.Size(55, 13);
-            this.lblKeyType.TabIndex = 18;
-            this.lblKeyType.Text = "Key Type:";
-            // 
-            // tbxKeyValue
-            // 
-            this.tbxKeyValue.Location = new System.Drawing.Point(341, 29);
-            this.tbxKeyValue.Name = "tbxKeyValue";
-            this.tbxKeyValue.Size = new System.Drawing.Size(249, 20);
-            this.tbxKeyValue.TabIndex = 17;
-            this.tbxKeyValue.Text = "00000000000000000000000000000000";
-            // 
-            // lblKeyValue
-            // 
-            this.lblKeyValue.AutoSize = true;
-            this.lblKeyValue.Location = new System.Drawing.Point(277, 32);
-            this.lblKeyValue.Name = "lblKeyValue";
-            this.lblKeyValue.Size = new System.Drawing.Size(58, 13);
-            this.lblKeyValue.TabIndex = 16;
-            this.lblKeyValue.Text = "Key Value:";
+            lblFileNo.AutoSize = true;
+            lblFileNo.Location = new System.Drawing.Point(486, 59);
+            lblFileNo.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            lblFileNo.Name = "lblFileNo";
+            lblFileNo.Size = new System.Drawing.Size(71, 25);
+            lblFileNo.TabIndex = 20;
+            lblFileNo.Text = "File No:";
             // 
             // nupKeyNo
             // 
-            this.nupKeyNo.Location = new System.Drawing.Point(341, 3);
-            this.nupKeyNo.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.nupKeyNo.Name = "nupKeyNo";
-            this.nupKeyNo.Size = new System.Drawing.Size(87, 20);
-            this.nupKeyNo.TabIndex = 15;
-            this.nupKeyNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            nupKeyNo.Location = new System.Drawing.Point(568, 6);
+            nupKeyNo.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            nupKeyNo.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
+            nupKeyNo.Name = "nupKeyNo";
+            nupKeyNo.Size = new System.Drawing.Size(145, 31);
+            nupKeyNo.TabIndex = 15;
+            nupKeyNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblKeyNo
             // 
-            this.lblKeyNo.AutoSize = true;
-            this.lblKeyNo.Location = new System.Drawing.Point(290, 5);
-            this.lblKeyNo.Name = "lblKeyNo";
-            this.lblKeyNo.Size = new System.Drawing.Size(45, 13);
-            this.lblKeyNo.TabIndex = 14;
-            this.lblKeyNo.Text = "Key No:";
+            lblKeyNo.AutoSize = true;
+            lblKeyNo.Location = new System.Drawing.Point(483, 10);
+            lblKeyNo.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            lblKeyNo.Name = "lblKeyNo";
+            lblKeyNo.Size = new System.Drawing.Size(73, 25);
+            lblKeyNo.TabIndex = 14;
+            lblKeyNo.Text = "Key No:";
             // 
             // nupTimeout
             // 
-            this.nupTimeout.Location = new System.Drawing.Point(85, 3);
-            this.nupTimeout.Maximum = new decimal(new int[] {
-            60000,
-            0,
-            0,
-            0});
-            this.nupTimeout.Name = "nupTimeout";
-            this.nupTimeout.Size = new System.Drawing.Size(120, 20);
-            this.nupTimeout.TabIndex = 13;
-            this.nupTimeout.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.nupTimeout.Value = new decimal(new int[] {
-            3000,
-            0,
-            0,
-            0});
+            nupTimeout.Location = new System.Drawing.Point(142, 6);
+            nupTimeout.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            nupTimeout.Maximum = new decimal(new int[] { 60000, 0, 0, 0 });
+            nupTimeout.Name = "nupTimeout";
+            nupTimeout.Size = new System.Drawing.Size(200, 31);
+            nupTimeout.TabIndex = 13;
+            nupTimeout.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            nupTimeout.Value = new decimal(new int[] { 3000, 0, 0, 0 });
             // 
             // lblTimeout
             // 
-            this.lblTimeout.AutoSize = true;
-            this.lblTimeout.Location = new System.Drawing.Point(9, 5);
-            this.lblTimeout.Name = "lblTimeout";
-            this.lblTimeout.Size = new System.Drawing.Size(70, 13);
-            this.lblTimeout.TabIndex = 12;
-            this.lblTimeout.Text = "Timeout (ms):";
+            lblTimeout.AutoSize = true;
+            lblTimeout.Location = new System.Drawing.Point(15, 10);
+            lblTimeout.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            lblTimeout.Name = "lblTimeout";
+            lblTimeout.Size = new System.Drawing.Size(120, 25);
+            lblTimeout.TabIndex = 12;
+            lblTimeout.Text = "Timeout (ms):";
             // 
             // DESFireParametersControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tbxApplicationId);
-            this.Controls.Add(this.lblApplicationId);
-            this.Controls.Add(this.nupFileNo);
-            this.Controls.Add(this.lblFileNo);
-            this.Controls.Add(this.cbKeyType);
-            this.Controls.Add(this.lblKeyType);
-            this.Controls.Add(this.tbxKeyValue);
-            this.Controls.Add(this.lblKeyValue);
-            this.Controls.Add(this.nupKeyNo);
-            this.Controls.Add(this.lblKeyNo);
-            this.Controls.Add(this.nupTimeout);
-            this.Controls.Add(this.lblTimeout);
-            this.Name = "DESFireParametersControl";
-            this.Size = new System.Drawing.Size(596, 84);
-            ((System.ComponentModel.ISupportInitialize)(this.nupFileNo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nupKeyNo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nupTimeout)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            Controls.Add(tbxApplicationId);
+            Controls.Add(lblApplicationId);
+            Controls.Add(nupFileNo);
+            Controls.Add(lblFileNo);
+            Controls.Add(nupKeyNo);
+            Controls.Add(lblKeyNo);
+            Controls.Add(nupTimeout);
+            Controls.Add(lblTimeout);
+            Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            Name = "DESFireParametersControl";
+            Size = new System.Drawing.Size(721, 95);
+            ((System.ComponentModel.ISupportInitialize)nupFileNo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nupKeyNo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nupTimeout).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -206,10 +151,6 @@
         private System.Windows.Forms.Label lblApplicationId;
         private System.Windows.Forms.NumericUpDown nupFileNo;
         private System.Windows.Forms.Label lblFileNo;
-        private System.Windows.Forms.ComboBox cbKeyType;
-        private System.Windows.Forms.Label lblKeyType;
-        private System.Windows.Forms.TextBox tbxKeyValue;
-        private System.Windows.Forms.Label lblKeyValue;
         private System.Windows.Forms.NumericUpDown nupKeyNo;
         private System.Windows.Forms.Label lblKeyNo;
         private System.Windows.Forms.NumericUpDown nupTimeout;

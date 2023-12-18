@@ -16,7 +16,6 @@ namespace RWCard_DESFire
         public DESFireParametersControl()
         {
             InitializeComponent();
-            cbKeyType.SelectedIndex = 0;
         }
 
         [System.ComponentModel.Browsable(true), System.ComponentModel.DefaultValue(false)]
@@ -24,13 +23,6 @@ namespace RWCard_DESFire
         {
             get { return !nupFileNo.Enabled; }
             set { nupFileNo.Enabled = !value; }
-        }
-
-        [System.ComponentModel.Browsable(true), System.ComponentModel.DefaultValue(false)]
-        public bool DisableKeyValueParameters
-        {
-            get { return !tbxKeyValue.Enabled; }
-            set { tbxKeyValue.Enabled = !value; }
         }
 
         public uint GetTimeout()
@@ -51,24 +43,6 @@ namespace RWCard_DESFire
         public byte GetKeyNo()
         {
             return (byte)nupKeyNo.Value;
-        }
-
-        public DESFireKeyType GetCryptoMethod()
-        {
-            var crypto = DESFireKeyType.DF_KEY_DES;
-            if (cbKeyType.SelectedIndex > -1)
-            {
-                Enum.TryParse("DF_KEY_" + cbKeyType.SelectedItem.ToString(), out crypto);
-            }
-            return crypto;
-        }
-
-        public DESFireKey GetKey()
-        {
-            var key = new DESFireKey();
-            key.setKeyType(GetCryptoMethod());
-            key.fromString(tbxKeyValue.Text);
-            return key;
         }
     }
 }

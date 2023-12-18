@@ -41,7 +41,7 @@ namespace RWCard_DESFire
                 var data = (storage as StorageCardService).readData(location, aiToWrite, 16, CardBehavior.CB_DEFAULT);
                 ret = GetString(data);
 
-                MessageBox.Show("Read succeeded", "Info:", MessageBoxButtons.OK);
+                MessageBox.Show("Read succeeded", "Info", MessageBoxButtons.OK);
             }
             else
                 throw new Exception("Impossible to get card service.");
@@ -68,7 +68,7 @@ namespace RWCard_DESFire
                var arrayData = GetBytes(data, 16);
                (storage as StorageCardService).writeData(location, aiToUse, aiToWrite, arrayData, CardBehavior.CB_DEFAULT);
 
-               MessageBox.Show("Write succeeded", "Info:", MessageBoxButtons.OK);
+               MessageBox.Show("Write succeeded", "Info", MessageBoxButtons.OK);
             }
             else
                 throw new Exception("Impossible to get card service.");

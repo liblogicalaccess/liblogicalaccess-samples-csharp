@@ -1,9 +1,9 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RWCard-DESFire", "RWCard-DESFire\RWCard-DESFire.csproj", "{BBA4D945-42EB-4A3C-BA6D-EB2556DCB233}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RWCard-DESFire", "RWCard-DESFire\RWCard-DESFire.csproj", "{BBA4D945-42EB-4A3C-BA6D-EB2556DCB233}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
