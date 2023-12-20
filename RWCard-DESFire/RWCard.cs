@@ -33,5 +33,10 @@ namespace RWCard_DESFire
         {
             ShowSample(new AuthWithSAMSample());
         }
+
+        private void btnSAMCommands_Click(object sender, EventArgs e)
+        {
+            ShowSample(new SAMCommandsSample());
+        }
     }
 }
