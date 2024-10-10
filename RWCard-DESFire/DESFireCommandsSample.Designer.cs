@@ -305,6 +305,7 @@
             btnWriteData.TabIndex = 3;
             btnWriteData.Text = "Write Data";
             btnWriteData.UseVisualStyleBackColor = true;
+            btnWriteData.Click += btnWriteData_Click;
             // 
             // btnReadData
             // 
@@ -315,6 +316,7 @@
             btnReadData.TabIndex = 1;
             btnReadData.Text = "Read Data";
             btnReadData.UseVisualStyleBackColor = true;
+            btnReadData.Click += btnReadData_Click;
             // 
             // gpCommandsKey
             // 

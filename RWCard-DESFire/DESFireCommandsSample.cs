@@ -70,7 +70,7 @@ namespace RWCard_DESFire
                 else
                     throw new Exception("This sample requires at least DESFire EV1 version");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ShowError(ex.Message);
             }
@@ -165,6 +165,8 @@ namespace RWCard_DESFire
                 var data = cmd.readData(dfparams.GetFileNo(), 0, 32, EncryptionMode.CM_ENCRYPT);
                 var datastr = System.Text.Encoding.ASCII.GetString(data.ToArray());
                 MessageBox.Show(datastr);
+                datastr = Convert.ToHexString(data.ToArray());
+                MessageBox.Show(datastr);
             });
         }
 
@@ -176,7 +178,7 @@ namespace RWCard_DESFire
                 {
                     action(cmd);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, Properties.Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
