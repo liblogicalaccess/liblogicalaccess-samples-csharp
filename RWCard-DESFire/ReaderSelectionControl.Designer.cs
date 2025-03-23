@@ -28,73 +28,80 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.linkRefreshReaderUnit = new System.Windows.Forms.LinkLabel();
-            this.cbReaderUnit = new System.Windows.Forms.ComboBox();
-            this.cbReaderProvider = new System.Windows.Forms.ComboBox();
-            this.lblReaderUnit = new System.Windows.Forms.Label();
-            this.lblReaderProvider = new System.Windows.Forms.Label();
-            this.SuspendLayout();
+            linkRefreshReaderUnit = new System.Windows.Forms.LinkLabel();
+            cbReaderUnit = new System.Windows.Forms.ComboBox();
+            cbReaderProvider = new System.Windows.Forms.ComboBox();
+            lblReaderUnit = new System.Windows.Forms.Label();
+            lblReaderProvider = new System.Windows.Forms.Label();
+            SuspendLayout();
             // 
             // linkRefreshReaderUnit
             // 
-            this.linkRefreshReaderUnit.AutoSize = true;
-            this.linkRefreshReaderUnit.Location = new System.Drawing.Point(426, 39);
-            this.linkRefreshReaderUnit.Name = "linkRefreshReaderUnit";
-            this.linkRefreshReaderUnit.Size = new System.Drawing.Size(44, 13);
-            this.linkRefreshReaderUnit.TabIndex = 9;
-            this.linkRefreshReaderUnit.TabStop = true;
-            this.linkRefreshReaderUnit.Text = "Refresh";
+            linkRefreshReaderUnit.AutoSize = true;
+            linkRefreshReaderUnit.Location = new System.Drawing.Point(710, 75);
+            linkRefreshReaderUnit.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            linkRefreshReaderUnit.Name = "linkRefreshReaderUnit";
+            linkRefreshReaderUnit.Size = new System.Drawing.Size(70, 25);
+            linkRefreshReaderUnit.TabIndex = 9;
+            linkRefreshReaderUnit.TabStop = true;
+            linkRefreshReaderUnit.Text = "Refresh";
+            linkRefreshReaderUnit.LinkClicked += linkRefreshReaderUnit_LinkClicked;
             // 
             // cbReaderUnit
             // 
-            this.cbReaderUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbReaderUnit.FormattingEnabled = true;
-            this.cbReaderUnit.Location = new System.Drawing.Point(100, 36);
-            this.cbReaderUnit.Name = "cbReaderUnit";
-            this.cbReaderUnit.Size = new System.Drawing.Size(320, 21);
-            this.cbReaderUnit.TabIndex = 8;
+            cbReaderUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cbReaderUnit.FormattingEnabled = true;
+            cbReaderUnit.Location = new System.Drawing.Point(167, 69);
+            cbReaderUnit.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            cbReaderUnit.Name = "cbReaderUnit";
+            cbReaderUnit.Size = new System.Drawing.Size(531, 33);
+            cbReaderUnit.TabIndex = 8;
             // 
             // cbReaderProvider
             // 
-            this.cbReaderProvider.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbReaderProvider.FormattingEnabled = true;
-            this.cbReaderProvider.Location = new System.Drawing.Point(100, 3);
-            this.cbReaderProvider.Name = "cbReaderProvider";
-            this.cbReaderProvider.Size = new System.Drawing.Size(320, 21);
-            this.cbReaderProvider.TabIndex = 7;
-            this.cbReaderProvider.SelectedIndexChanged += new System.EventHandler(this.cbReaderProvider_SelectedIndexChanged);
+            cbReaderProvider.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cbReaderProvider.FormattingEnabled = true;
+            cbReaderProvider.Location = new System.Drawing.Point(167, 6);
+            cbReaderProvider.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            cbReaderProvider.Name = "cbReaderProvider";
+            cbReaderProvider.Size = new System.Drawing.Size(531, 33);
+            cbReaderProvider.TabIndex = 7;
+            cbReaderProvider.SelectedIndexChanged += cbReaderProvider_SelectedIndexChanged;
             // 
             // lblReaderUnit
             // 
-            this.lblReaderUnit.AutoSize = true;
-            this.lblReaderUnit.Location = new System.Drawing.Point(27, 39);
-            this.lblReaderUnit.Name = "lblReaderUnit";
-            this.lblReaderUnit.Size = new System.Drawing.Size(67, 13);
-            this.lblReaderUnit.TabIndex = 6;
-            this.lblReaderUnit.Text = "Reader Unit:";
+            lblReaderUnit.AutoSize = true;
+            lblReaderUnit.Location = new System.Drawing.Point(45, 75);
+            lblReaderUnit.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            lblReaderUnit.Name = "lblReaderUnit";
+            lblReaderUnit.Size = new System.Drawing.Size(107, 25);
+            lblReaderUnit.TabIndex = 6;
+            lblReaderUnit.Text = "Reader Unit:";
             // 
             // lblReaderProvider
             // 
-            this.lblReaderProvider.AutoSize = true;
-            this.lblReaderProvider.Location = new System.Drawing.Point(7, 6);
-            this.lblReaderProvider.Name = "lblReaderProvider";
-            this.lblReaderProvider.Size = new System.Drawing.Size(87, 13);
-            this.lblReaderProvider.TabIndex = 5;
-            this.lblReaderProvider.Text = "Reader Provider:";
+            lblReaderProvider.AutoSize = true;
+            lblReaderProvider.Location = new System.Drawing.Point(12, 12);
+            lblReaderProvider.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            lblReaderProvider.Name = "lblReaderProvider";
+            lblReaderProvider.Size = new System.Drawing.Size(141, 25);
+            lblReaderProvider.TabIndex = 5;
+            lblReaderProvider.Text = "Reader Provider:";
             // 
             // ReaderSelectionControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.linkRefreshReaderUnit);
-            this.Controls.Add(this.cbReaderUnit);
-            this.Controls.Add(this.cbReaderProvider);
-            this.Controls.Add(this.lblReaderUnit);
-            this.Controls.Add(this.lblReaderProvider);
-            this.Name = "ReaderSelectionControl";
-            this.Size = new System.Drawing.Size(470, 66);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            Controls.Add(linkRefreshReaderUnit);
+            Controls.Add(cbReaderUnit);
+            Controls.Add(cbReaderProvider);
+            Controls.Add(lblReaderUnit);
+            Controls.Add(lblReaderProvider);
+            Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            Name = "ReaderSelectionControl";
+            Size = new System.Drawing.Size(783, 127);
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 

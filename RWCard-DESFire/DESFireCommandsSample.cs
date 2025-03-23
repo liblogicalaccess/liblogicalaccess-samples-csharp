@@ -16,6 +16,8 @@ namespace RWCard_DESFire
         private Chip chip = null;
         private DESFireCommands cmd = null;
         private DESFireEV1Commands cmdev1 = null;
+        private DESFireEV2Commands cmdev2 = null;
+        private DESFireEV3Commands cmdev3 = null;
 
         private void ShowError(string msg)
         {
@@ -66,6 +68,14 @@ namespace RWCard_DESFire
                 if (ct == "DESFireEV1" || ct == "DESFireEV2" || ct == "DESFireEV3")
                 {
                     cmdev1 = (chip as DESFireEV1Chip).getDESFireEV1Commands();
+                    if (ct == "DESFireEV2" || ct == "DESFireEV3")
+                    {
+                        cmdev2 = (chip as DESFireEV2Chip).getDESFireEV2Commands();
+                        if (ct == "DESFireEV3")
+                        {
+                            cmdev3 = (chip as DESFireEV3Chip).getDESFireEV3Commands();
+                        }
+                    }
                 }
                 else
                     throw new Exception("This sample requires at least DESFire EV1 version");
