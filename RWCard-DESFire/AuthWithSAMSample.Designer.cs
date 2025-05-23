@@ -48,6 +48,8 @@
             btnInit = new System.Windows.Forms.Button();
             gpKey = new System.Windows.Forms.GroupBox();
             keyparams = new KeyParametersControl();
+            btnRunChangeKey = new System.Windows.Forms.Button();
+            btnRunSelectApplication = new System.Windows.Forms.Button();
             gpSAMReader.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nupKeyVersion).BeginInit();
@@ -64,10 +66,10 @@
             gpSAMReader.Controls.Add(panel1);
             gpSAMReader.Dock = System.Windows.Forms.DockStyle.Top;
             gpSAMReader.Location = new System.Drawing.Point(0, 0);
-            gpSAMReader.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            gpSAMReader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             gpSAMReader.Name = "gpSAMReader";
-            gpSAMReader.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            gpSAMReader.Size = new System.Drawing.Size(1188, 264);
+            gpSAMReader.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            gpSAMReader.Size = new System.Drawing.Size(832, 158);
             gpSAMReader.TabIndex = 0;
             gpSAMReader.TabStop = false;
             gpSAMReader.Text = "SAM Reader";
@@ -75,10 +77,10 @@
             // readerSelectionControl
             // 
             readerSelectionControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            readerSelectionControl.Location = new System.Drawing.Point(5, 30);
-            readerSelectionControl.Margin = new System.Windows.Forms.Padding(8, 12, 8, 12);
+            readerSelectionControl.Location = new System.Drawing.Point(4, 20);
+            readerSelectionControl.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             readerSelectionControl.Name = "readerSelectionControl";
-            readerSelectionControl.Size = new System.Drawing.Size(1178, 122);
+            readerSelectionControl.Size = new System.Drawing.Size(824, 70);
             readerSelectionControl.TabIndex = 0;
             // 
             // panel1
@@ -92,88 +94,88 @@
             panel1.Controls.Add(nupKeyNo);
             panel1.Controls.Add(lblKeyNo);
             panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            panel1.Location = new System.Drawing.Point(5, 152);
-            panel1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            panel1.Location = new System.Drawing.Point(4, 90);
+            panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(1178, 106);
+            panel1.Size = new System.Drawing.Size(824, 64);
             panel1.TabIndex = 1;
             // 
             // nupKeyVersion
             // 
-            nupKeyVersion.Location = new System.Drawing.Point(757, 65);
-            nupKeyVersion.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            nupKeyVersion.Location = new System.Drawing.Point(530, 39);
+            nupKeyVersion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             nupKeyVersion.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
             nupKeyVersion.Name = "nupKeyVersion";
-            nupKeyVersion.Size = new System.Drawing.Size(145, 31);
+            nupKeyVersion.Size = new System.Drawing.Size(102, 23);
             nupKeyVersion.TabIndex = 23;
             nupKeyVersion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblKeyVersion
             // 
             lblKeyVersion.AutoSize = true;
-            lblKeyVersion.Location = new System.Drawing.Point(590, 67);
-            lblKeyVersion.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            lblKeyVersion.Location = new System.Drawing.Point(413, 40);
+            lblKeyVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             lblKeyVersion.Name = "lblKeyVersion";
-            lblKeyVersion.Size = new System.Drawing.Size(149, 25);
+            lblKeyVersion.Size = new System.Drawing.Size(99, 15);
             lblKeyVersion.TabIndex = 22;
             lblKeyVersion.Text = "PICC Key Version:";
             // 
             // nupKeySlot
             // 
-            nupKeySlot.Location = new System.Drawing.Point(232, 65);
-            nupKeySlot.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            nupKeySlot.Location = new System.Drawing.Point(162, 39);
+            nupKeySlot.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             nupKeySlot.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
             nupKeySlot.Name = "nupKeySlot";
-            nupKeySlot.Size = new System.Drawing.Size(145, 31);
+            nupKeySlot.Size = new System.Drawing.Size(102, 23);
             nupKeySlot.TabIndex = 21;
             nupKeySlot.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblKeySlot
             // 
             lblKeySlot.AutoSize = true;
-            lblKeySlot.Location = new System.Drawing.Point(96, 68);
-            lblKeySlot.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            lblKeySlot.Location = new System.Drawing.Point(67, 41);
+            lblKeySlot.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             lblKeySlot.Name = "lblKeySlot";
-            lblKeySlot.Size = new System.Drawing.Size(122, 25);
+            lblKeySlot.Size = new System.Drawing.Size(81, 15);
             lblKeySlot.TabIndex = 20;
             lblKeySlot.Text = "PICC Key Slot:";
             // 
             // tbxKeyValue
             // 
-            tbxKeyValue.Location = new System.Drawing.Point(757, 12);
-            tbxKeyValue.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            tbxKeyValue.Location = new System.Drawing.Point(530, 7);
+            tbxKeyValue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             tbxKeyValue.Name = "tbxKeyValue";
-            tbxKeyValue.Size = new System.Drawing.Size(412, 31);
+            tbxKeyValue.Size = new System.Drawing.Size(290, 23);
             tbxKeyValue.TabIndex = 19;
             tbxKeyValue.Text = "00000000000000000000000000000000";
             // 
             // lblKeyValue
             // 
             lblKeyValue.AutoSize = true;
-            lblKeyValue.Location = new System.Drawing.Point(589, 17);
-            lblKeyValue.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            lblKeyValue.Location = new System.Drawing.Point(412, 10);
+            lblKeyValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             lblKeyValue.Name = "lblKeyValue";
-            lblKeyValue.Size = new System.Drawing.Size(150, 25);
+            lblKeyValue.Size = new System.Drawing.Size(100, 15);
             lblKeyValue.TabIndex = 18;
             lblKeyValue.Text = "Unlock Key Value:";
             // 
             // nupKeyNo
             // 
-            nupKeyNo.Location = new System.Drawing.Point(232, 15);
-            nupKeyNo.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            nupKeyNo.Location = new System.Drawing.Point(162, 9);
+            nupKeyNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             nupKeyNo.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
             nupKeyNo.Name = "nupKeyNo";
-            nupKeyNo.Size = new System.Drawing.Size(145, 31);
+            nupKeyNo.Size = new System.Drawing.Size(102, 23);
             nupKeyNo.TabIndex = 17;
             nupKeyNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblKeyNo
             // 
             lblKeyNo.AutoSize = true;
-            lblKeyNo.Location = new System.Drawing.Point(79, 18);
-            lblKeyNo.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            lblKeyNo.Location = new System.Drawing.Point(55, 11);
+            lblKeyNo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             lblKeyNo.Name = "lblKeyNo";
-            lblKeyNo.Size = new System.Drawing.Size(139, 25);
+            lblKeyNo.Size = new System.Drawing.Size(92, 15);
             lblKeyNo.TabIndex = 16;
             lblKeyNo.Text = "Unlock Key Slot:";
             // 
@@ -181,11 +183,11 @@
             // 
             gpParameters.Controls.Add(dfparams);
             gpParameters.Dock = System.Windows.Forms.DockStyle.Top;
-            gpParameters.Location = new System.Drawing.Point(0, 264);
-            gpParameters.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            gpParameters.Location = new System.Drawing.Point(0, 158);
+            gpParameters.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             gpParameters.Name = "gpParameters";
-            gpParameters.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            gpParameters.Size = new System.Drawing.Size(1188, 140);
+            gpParameters.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            gpParameters.Size = new System.Drawing.Size(832, 84);
             gpParameters.TabIndex = 4;
             gpParameters.TabStop = false;
             gpParameters.Text = "Parameters";
@@ -193,34 +195,36 @@
             // dfparams
             // 
             dfparams.Dock = System.Windows.Forms.DockStyle.Fill;
-            dfparams.Location = new System.Drawing.Point(5, 30);
-            dfparams.Margin = new System.Windows.Forms.Padding(8, 12, 8, 12);
+            dfparams.Location = new System.Drawing.Point(4, 20);
+            dfparams.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             dfparams.Name = "dfparams";
-            dfparams.Size = new System.Drawing.Size(1178, 104);
+            dfparams.Size = new System.Drawing.Size(824, 60);
             dfparams.TabIndex = 0;
             // 
             // gpCommands
             // 
+            gpCommands.Controls.Add(btnRunSelectApplication);
+            gpCommands.Controls.Add(btnRunChangeKey);
             gpCommands.Controls.Add(btnReadData);
             gpCommands.Controls.Add(btnRunAuthenticate);
             gpCommands.Controls.Add(btnUnInit);
             gpCommands.Controls.Add(btnInit);
             gpCommands.Dock = System.Windows.Forms.DockStyle.Fill;
-            gpCommands.Location = new System.Drawing.Point(0, 578);
-            gpCommands.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            gpCommands.Location = new System.Drawing.Point(0, 346);
+            gpCommands.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             gpCommands.Name = "gpCommands";
-            gpCommands.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            gpCommands.Size = new System.Drawing.Size(1188, 132);
+            gpCommands.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            gpCommands.Size = new System.Drawing.Size(832, 139);
             gpCommands.TabIndex = 5;
             gpCommands.TabStop = false;
             gpCommands.Text = "Commands";
             // 
             // btnReadData
             // 
-            btnReadData.Location = new System.Drawing.Point(600, 36);
-            btnReadData.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            btnReadData.Location = new System.Drawing.Point(6, 81);
+            btnReadData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             btnReadData.Name = "btnReadData";
-            btnReadData.Size = new System.Drawing.Size(285, 85);
+            btnReadData.Size = new System.Drawing.Size(200, 51);
             btnReadData.TabIndex = 7;
             btnReadData.Text = "Read Data";
             btnReadData.UseVisualStyleBackColor = true;
@@ -228,10 +232,10 @@
             // 
             // btnRunAuthenticate
             // 
-            btnRunAuthenticate.Location = new System.Drawing.Point(305, 36);
-            btnRunAuthenticate.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            btnRunAuthenticate.Location = new System.Drawing.Point(423, 22);
+            btnRunAuthenticate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             btnRunAuthenticate.Name = "btnRunAuthenticate";
-            btnRunAuthenticate.Size = new System.Drawing.Size(285, 85);
+            btnRunAuthenticate.Size = new System.Drawing.Size(200, 51);
             btnRunAuthenticate.TabIndex = 6;
             btnRunAuthenticate.Text = "Authenticate";
             btnRunAuthenticate.UseVisualStyleBackColor = true;
@@ -239,10 +243,10 @@
             // 
             // btnUnInit
             // 
-            btnUnInit.Location = new System.Drawing.Point(895, 36);
-            btnUnInit.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            btnUnInit.Location = new System.Drawing.Point(215, 81);
+            btnUnInit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             btnUnInit.Name = "btnUnInit";
-            btnUnInit.Size = new System.Drawing.Size(285, 85);
+            btnUnInit.Size = new System.Drawing.Size(200, 51);
             btnUnInit.TabIndex = 5;
             btnUnInit.Text = "UnInit";
             btnUnInit.UseVisualStyleBackColor = true;
@@ -250,10 +254,10 @@
             // 
             // btnInit
             // 
-            btnInit.Location = new System.Drawing.Point(10, 36);
-            btnInit.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            btnInit.Location = new System.Drawing.Point(7, 22);
+            btnInit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             btnInit.Name = "btnInit";
-            btnInit.Size = new System.Drawing.Size(285, 85);
+            btnInit.Size = new System.Drawing.Size(200, 51);
             btnInit.TabIndex = 4;
             btnInit.Text = "Init";
             btnInit.UseVisualStyleBackColor = true;
@@ -263,11 +267,11 @@
             // 
             gpKey.Controls.Add(keyparams);
             gpKey.Dock = System.Windows.Forms.DockStyle.Top;
-            gpKey.Location = new System.Drawing.Point(0, 404);
-            gpKey.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            gpKey.Location = new System.Drawing.Point(0, 242);
+            gpKey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             gpKey.Name = "gpKey";
-            gpKey.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            gpKey.Size = new System.Drawing.Size(1188, 174);
+            gpKey.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            gpKey.Size = new System.Drawing.Size(832, 104);
             gpKey.TabIndex = 7;
             gpKey.TabStop = false;
             gpKey.Text = "Key";
@@ -276,23 +280,45 @@
             // 
             keyparams.DisableKeyValueParameters = true;
             keyparams.Dock = System.Windows.Forms.DockStyle.Fill;
-            keyparams.Location = new System.Drawing.Point(5, 30);
-            keyparams.Margin = new System.Windows.Forms.Padding(8, 12, 8, 12);
+            keyparams.Location = new System.Drawing.Point(4, 20);
+            keyparams.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             keyparams.Name = "keyparams";
-            keyparams.Size = new System.Drawing.Size(1178, 138);
+            keyparams.Size = new System.Drawing.Size(824, 80);
             keyparams.TabIndex = 0;
+            // 
+            // btnRunChangeKey
+            // 
+            btnRunChangeKey.Location = new System.Drawing.Point(631, 22);
+            btnRunChangeKey.Margin = new System.Windows.Forms.Padding(4);
+            btnRunChangeKey.Name = "btnRunChangeKey";
+            btnRunChangeKey.Size = new System.Drawing.Size(200, 51);
+            btnRunChangeKey.TabIndex = 8;
+            btnRunChangeKey.Text = "Change Key";
+            btnRunChangeKey.UseVisualStyleBackColor = true;
+            btnRunChangeKey.Click += btnRunChangeKey_Click;
+            // 
+            // btnRunSelectApplication
+            // 
+            btnRunSelectApplication.Location = new System.Drawing.Point(215, 22);
+            btnRunSelectApplication.Margin = new System.Windows.Forms.Padding(4);
+            btnRunSelectApplication.Name = "btnRunSelectApplication";
+            btnRunSelectApplication.Size = new System.Drawing.Size(200, 51);
+            btnRunSelectApplication.TabIndex = 9;
+            btnRunSelectApplication.Text = "Select Application";
+            btnRunSelectApplication.UseVisualStyleBackColor = true;
+            btnRunSelectApplication.Click += btnRunSelectApplication_Click;
             // 
             // AuthWithSAMSample
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1188, 710);
+            ClientSize = new System.Drawing.Size(832, 485);
             Controls.Add(gpCommands);
             Controls.Add(gpKey);
             Controls.Add(gpParameters);
             Controls.Add(gpSAMReader);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             Name = "AuthWithSAMSample";
             Text = "Authenticate with a SAM";
             gpSAMReader.ResumeLayout(false);
@@ -329,5 +355,7 @@
         private System.Windows.Forms.Label lblKeyVersion;
         private System.Windows.Forms.GroupBox gpKey;
         private KeyParametersControl keyparams;
+        private System.Windows.Forms.Button btnRunChangeKey;
+        private System.Windows.Forms.Button btnRunSelectApplication;
     }
 }

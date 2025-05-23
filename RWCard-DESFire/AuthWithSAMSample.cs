@@ -74,12 +74,22 @@ namespace RWCard_DESFire
             }
         }
 
-        private void btnRunAuthenticate_Click(object sender, System.EventArgs e)
+        private void btnRunSelectApplication_Click(object sender, EventArgs e)
         {
             try
             {
                 cmd.selectApplication(dfparams.GetApplicationID());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Properties.Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
+        private void btnRunAuthenticate_Click(object sender, System.EventArgs e)
+        {
+            try
+            {
                 var key = keyparams.GetKey();
                 // Here is where we define to use the SAM for furthers key usage (authenticate/changeKey commands)
                 var ks = new SAMKeyStorage();
@@ -88,6 +98,25 @@ namespace RWCard_DESFire
                 key.setKeyStorage(ks);
 
                 cmd.authenticate(dfparams.GetKeyNo(), key);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Properties.Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnRunChangeKey_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var key = keyparams.GetKey();
+                // Here is where we define to use the SAM for furthers key usage (authenticate/changeKey commands)
+                var ks = new SAMKeyStorage();
+                ks.setKeySlot(GetKeySlot());
+                key.setKeyVersion(GetKeyVersion());
+                key.setKeyStorage(ks);
+
+                cmd.changeKey(dfparams.GetKeyNo(), key);
             }
             catch (Exception ex)
             {
