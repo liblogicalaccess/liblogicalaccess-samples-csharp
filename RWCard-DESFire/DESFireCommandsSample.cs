@@ -1,6 +1,9 @@
 ﻿using LibLogicalAccess;
 using LibLogicalAccess.Card;
+using LibLogicalAccess.Crypto;
 using System;
+using System.Collections.Specialized;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 
@@ -18,6 +21,7 @@ namespace RWCard_DESFire
         private DESFireEV1Commands cmdev1 = null;
         private DESFireEV2Commands cmdev2 = null;
         private DESFireEV3Commands cmdev3 = null;
+        private NameValueCollection sdmParameters = new();
 
         private void ShowError(string msg)
         {
@@ -225,6 +229,96 @@ namespace RWCard_DESFire
                 var csndata = chip.getChipIdentifier();
                 var csn = Convert.ToHexString(csndata.ToArray());
                 MessageBox.Show(csn);
+            }
+        }
+
+        private void btnReadNdef_Click(object sender, EventArgs e)
+        {
+            if (chip != null)
+            {
+                var nfcsvc = chip.getService(CardServiceType.CST_NFC_TAG) as ISO7816NFCTag4CardService;
+                if (nfcsvc != null)
+                {
+                    var ndef = nfcsvc.readNDEF();
+                    if (ndef != null && ndef.getRecordCount() > 0)
+                    {
+                        foreach (var record in ndef.getRecords())
+                        {
+                            var recordType = record.getType();
+                            if (recordType.Count > 0 && recordType[0] == (byte)NdefType.Uri)
+                            {
+                                var r = new UriRecord();
+                                r.init(record.getTnf(), r.getType(), r.getId(), record.getPayload());
+                                MessageBox.Show(r.getUri(), "NDEF Record (URI)", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                try
+                                {
+                                    var uri = new Uri(r.getUri());
+                                    sdmParameters = System.Web.HttpUtility.ParseQueryString(uri.Query);
+                                }
+                                catch (Exception ex)
+                                {
+                                    ShowError(ex.Message);
+                                }
+                            }
+                            else if (recordType.Count > 0 && recordType[0] == (byte)NdefType.Text)
+                            {
+                                var t = new TextRecord();
+                                t.setPayload(record.getPayload());
+                                MessageBox.Show(t.getCleanPayload(), "NDEF Record (Text)", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                ShowError("Unsupported NDEF record type.");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        ShowError("No NDEF message found.");
+                    }
+                }
+            }
+        }
+
+        private void btnSdmUncipherPicc_Click(object sender, EventArgs e)
+        {
+            if (sdmParameters.HasKeys() && sdmParameters["picc"] != null)
+            {
+                try
+                {
+                    var picc = Convert.FromHexString(sdmParameters["picc"]);
+                    var aes = Aes.Create();
+                    // SDMMetaRead key
+                    aes.Key = Convert.FromHexString(keyparams.GetKey().getString().Replace(" ", ""));
+                    var decipheredData = aes.DecryptCbc(picc, new byte[16], PaddingMode.None);
+                    MessageBox.Show(Convert.ToHexString(decipheredData), "PICC Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    bool hasVcuid = (decipheredData[0] & 0x80) != 0;
+                    bool hasReadCtr = (decipheredData[0] & 0x40) != 0;
+                    int vcuidLength = decipheredData[0] & 0xf;
+                    int offset = 1;
+                    if (hasVcuid && vcuidLength > 0)
+                    {
+                        MessageBox.Show(Convert.ToHexString(decipheredData[offset..(offset+vcuidLength)]), "VCUID", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        offset += vcuidLength;
+                    }
+                    if (hasReadCtr)
+                    {
+                        int readCtr = decipheredData[offset++] |
+                            (decipheredData[offset++] << 8) |
+                            (decipheredData[offset++] << 16);
+                        MessageBox.Show(readCtr.ToString(), "Read Counter", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ShowError(ex.Message);
+                }
+            }
+            else
+            {
+                ShowError("No SDM parameters found.");
             }
         }
     }

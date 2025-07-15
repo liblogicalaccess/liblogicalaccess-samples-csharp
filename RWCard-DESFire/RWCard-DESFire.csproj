@@ -33,10 +33,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LibLogicalAccessNetCE">
-      <Version>3.4.0</Version>
+      <Version>3.5.1</Version>
     </PackageReference>
     <PackageReference Include="LibLogicalAccessNetCE.Native">
-      <Version>3.4.0</Version>
+      <Version>3.5.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />

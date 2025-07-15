@@ -40,16 +40,17 @@
             btnCreateStdDataFile = new System.Windows.Forms.Button();
             btnDeleteApplication = new System.Windows.Forms.Button();
             btnCreateApplication = new System.Windows.Forms.Button();
-            btnChangeKey = new System.Windows.Forms.Button();
-            btnAuthenticate = new System.Windows.Forms.Button();
             btnWaitInsertion = new System.Windows.Forms.Button();
             btnWaitRemoval = new System.Windows.Forms.Button();
             panelCommands = new System.Windows.Forms.Panel();
-            panelRightCommands = new System.Windows.Forms.GroupBox();
             gpCommandsCardData = new System.Windows.Forms.GroupBox();
+            btnSdmUncipherPicc = new System.Windows.Forms.Button();
+            btnReadNdef = new System.Windows.Forms.Button();
             btnWriteData = new System.Windows.Forms.Button();
             btnReadData = new System.Windows.Forms.Button();
             gpCommandsKey = new System.Windows.Forms.GroupBox();
+            btnAuthenticate = new System.Windows.Forms.Button();
+            btnChangeKey = new System.Windows.Forms.Button();
             gpCommandsReader = new System.Windows.Forms.GroupBox();
             btnConnectToReader = new System.Windows.Forms.Button();
             btnDisconnectFromReader = new System.Windows.Forms.Button();
@@ -60,7 +61,6 @@
             gpCommandsCard.SuspendLayout();
             gpCommandsCardStructure.SuspendLayout();
             panelCommands.SuspendLayout();
-            panelRightCommands.SuspendLayout();
             gpCommandsCardData.SuspendLayout();
             gpCommandsKey.SuspendLayout();
             gpCommandsReader.SuspendLayout();
@@ -212,28 +212,6 @@
             btnCreateApplication.UseVisualStyleBackColor = true;
             btnCreateApplication.Click += btnCreateApplication_Click;
             // 
-            // btnChangeKey
-            // 
-            btnChangeKey.Location = new System.Drawing.Point(5, 133);
-            btnChangeKey.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            btnChangeKey.Name = "btnChangeKey";
-            btnChangeKey.Size = new System.Drawing.Size(285, 85);
-            btnChangeKey.TabIndex = 7;
-            btnChangeKey.Text = "Change Key";
-            btnChangeKey.UseVisualStyleBackColor = true;
-            btnChangeKey.Click += btnChangeKey_Click;
-            // 
-            // btnAuthenticate
-            // 
-            btnAuthenticate.Location = new System.Drawing.Point(5, 36);
-            btnAuthenticate.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            btnAuthenticate.Name = "btnAuthenticate";
-            btnAuthenticate.Size = new System.Drawing.Size(285, 85);
-            btnAuthenticate.TabIndex = 2;
-            btnAuthenticate.Text = "Authenticate";
-            btnAuthenticate.UseVisualStyleBackColor = true;
-            btnAuthenticate.Click += btnAuthenticate_Click;
-            // 
             // btnWaitInsertion
             // 
             btnWaitInsertion.Location = new System.Drawing.Point(10, 229);
@@ -258,7 +236,8 @@
             // 
             // panelCommands
             // 
-            panelCommands.Controls.Add(panelRightCommands);
+            panelCommands.Controls.Add(gpCommandsCardData);
+            panelCommands.Controls.Add(gpCommandsKey);
             panelCommands.Controls.Add(gpCommandsCardStructure);
             panelCommands.Controls.Add(gpCommandsCard);
             panelCommands.Controls.Add(gpCommandsReader);
@@ -266,35 +245,46 @@
             panelCommands.Location = new System.Drawing.Point(0, 306);
             panelCommands.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             panelCommands.Name = "panelCommands";
-            panelCommands.Size = new System.Drawing.Size(1258, 614);
+            panelCommands.Size = new System.Drawing.Size(1568, 614);
             panelCommands.TabIndex = 2;
-            // 
-            // panelRightCommands
-            // 
-            panelRightCommands.Controls.Add(gpCommandsCardData);
-            panelRightCommands.Controls.Add(gpCommandsKey);
-            panelRightCommands.Dock = System.Windows.Forms.DockStyle.Left;
-            panelRightCommands.Location = new System.Drawing.Point(930, 0);
-            panelRightCommands.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            panelRightCommands.Name = "panelRightCommands";
-            panelRightCommands.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            panelRightCommands.Size = new System.Drawing.Size(310, 614);
-            panelRightCommands.TabIndex = 2;
-            panelRightCommands.TabStop = false;
             // 
             // gpCommandsCardData
             // 
+            gpCommandsCardData.Controls.Add(btnSdmUncipherPicc);
+            gpCommandsCardData.Controls.Add(btnReadNdef);
             gpCommandsCardData.Controls.Add(btnWriteData);
             gpCommandsCardData.Controls.Add(btnReadData);
-            gpCommandsCardData.Dock = System.Windows.Forms.DockStyle.Top;
-            gpCommandsCardData.Location = new System.Drawing.Point(5, 262);
+            gpCommandsCardData.Dock = System.Windows.Forms.DockStyle.Left;
+            gpCommandsCardData.Location = new System.Drawing.Point(1230, 0);
             gpCommandsCardData.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             gpCommandsCardData.Name = "gpCommandsCardData";
             gpCommandsCardData.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            gpCommandsCardData.Size = new System.Drawing.Size(300, 232);
-            gpCommandsCardData.TabIndex = 3;
+            gpCommandsCardData.Size = new System.Drawing.Size(300, 614);
+            gpCommandsCardData.TabIndex = 4;
             gpCommandsCardData.TabStop = false;
             gpCommandsCardData.Text = "Card Data";
+            // 
+            // btnSdmUncipherPicc
+            // 
+            btnSdmUncipherPicc.Location = new System.Drawing.Point(10, 324);
+            btnSdmUncipherPicc.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            btnSdmUncipherPicc.Name = "btnSdmUncipherPicc";
+            btnSdmUncipherPicc.Size = new System.Drawing.Size(285, 85);
+            btnSdmUncipherPicc.TabIndex = 6;
+            btnSdmUncipherPicc.Text = "SDM: Uncipher PICC data";
+            btnSdmUncipherPicc.UseVisualStyleBackColor = true;
+            btnSdmUncipherPicc.Click += btnSdmUncipherPicc_Click;
+            // 
+            // btnReadNdef
+            // 
+            btnReadNdef.Location = new System.Drawing.Point(10, 229);
+            btnReadNdef.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            btnReadNdef.Name = "btnReadNdef";
+            btnReadNdef.Size = new System.Drawing.Size(285, 85);
+            btnReadNdef.TabIndex = 4;
+            btnReadNdef.Text = "Read NDEF";
+            btnReadNdef.UseVisualStyleBackColor = true;
+            btnReadNdef.Click += btnReadNdef_Click;
             // 
             // btnWriteData
             // 
@@ -322,15 +312,37 @@
             // 
             gpCommandsKey.Controls.Add(btnAuthenticate);
             gpCommandsKey.Controls.Add(btnChangeKey);
-            gpCommandsKey.Dock = System.Windows.Forms.DockStyle.Top;
-            gpCommandsKey.Location = new System.Drawing.Point(5, 30);
+            gpCommandsKey.Dock = System.Windows.Forms.DockStyle.Left;
+            gpCommandsKey.Location = new System.Drawing.Point(930, 0);
             gpCommandsKey.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             gpCommandsKey.Name = "gpCommandsKey";
             gpCommandsKey.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            gpCommandsKey.Size = new System.Drawing.Size(300, 232);
-            gpCommandsKey.TabIndex = 4;
+            gpCommandsKey.Size = new System.Drawing.Size(300, 614);
+            gpCommandsKey.TabIndex = 5;
             gpCommandsKey.TabStop = false;
             gpCommandsKey.Text = "Key";
+            // 
+            // btnAuthenticate
+            // 
+            btnAuthenticate.Location = new System.Drawing.Point(5, 36);
+            btnAuthenticate.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            btnAuthenticate.Name = "btnAuthenticate";
+            btnAuthenticate.Size = new System.Drawing.Size(285, 85);
+            btnAuthenticate.TabIndex = 2;
+            btnAuthenticate.Text = "Authenticate";
+            btnAuthenticate.UseVisualStyleBackColor = true;
+            btnAuthenticate.Click += btnAuthenticate_Click;
+            // 
+            // btnChangeKey
+            // 
+            btnChangeKey.Location = new System.Drawing.Point(5, 133);
+            btnChangeKey.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            btnChangeKey.Name = "btnChangeKey";
+            btnChangeKey.Size = new System.Drawing.Size(285, 85);
+            btnChangeKey.TabIndex = 7;
+            btnChangeKey.Text = "Change Key";
+            btnChangeKey.UseVisualStyleBackColor = true;
+            btnChangeKey.Click += btnChangeKey_Click;
             // 
             // gpCommandsReader
             // 
@@ -378,7 +390,7 @@
             gpParameters.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             gpParameters.Name = "gpParameters";
             gpParameters.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            gpParameters.Size = new System.Drawing.Size(1258, 139);
+            gpParameters.Size = new System.Drawing.Size(1568, 139);
             gpParameters.TabIndex = 3;
             gpParameters.TabStop = false;
             gpParameters.Text = "Parameters";
@@ -389,7 +401,7 @@
             dfparams.Location = new System.Drawing.Point(5, 30);
             dfparams.Margin = new System.Windows.Forms.Padding(8, 12, 8, 12);
             dfparams.Name = "dfparams";
-            dfparams.Size = new System.Drawing.Size(1248, 103);
+            dfparams.Size = new System.Drawing.Size(1558, 103);
             dfparams.TabIndex = 0;
             // 
             // gpKey
@@ -400,7 +412,7 @@
             gpKey.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             gpKey.Name = "gpKey";
             gpKey.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            gpKey.Size = new System.Drawing.Size(1258, 167);
+            gpKey.Size = new System.Drawing.Size(1568, 167);
             gpKey.TabIndex = 4;
             gpKey.TabStop = false;
             gpKey.Text = "Key";
@@ -411,14 +423,14 @@
             keyparams.Location = new System.Drawing.Point(5, 30);
             keyparams.Margin = new System.Windows.Forms.Padding(8, 12, 8, 12);
             keyparams.Name = "keyparams";
-            keyparams.Size = new System.Drawing.Size(1248, 131);
+            keyparams.Size = new System.Drawing.Size(1558, 131);
             keyparams.TabIndex = 0;
             // 
             // DESFireCommandsSample
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1258, 920);
+            ClientSize = new System.Drawing.Size(1568, 920);
             Controls.Add(panelCommands);
             Controls.Add(gpKey);
             Controls.Add(gpParameters);
@@ -430,7 +442,6 @@
             gpCommandsCard.ResumeLayout(false);
             gpCommandsCardStructure.ResumeLayout(false);
             panelCommands.ResumeLayout(false);
-            panelRightCommands.ResumeLayout(false);
             gpCommandsCardData.ResumeLayout(false);
             gpCommandsKey.ResumeLayout(false);
             gpCommandsReader.ResumeLayout(false);
@@ -450,14 +461,11 @@
         private System.Windows.Forms.Button btnWaitInsertion;
         private System.Windows.Forms.Panel panelCommands;
         private System.Windows.Forms.GroupBox gpParameters;
-        private System.Windows.Forms.Button btnAuthenticate;
         private System.Windows.Forms.Button btnDeleteFile;
         private System.Windows.Forms.Button btnCreateStdDataFile;
         private System.Windows.Forms.Button btnDeleteApplication;
         private System.Windows.Forms.Button btnCreateApplication;
-        private System.Windows.Forms.Button btnChangeKey;
         private System.Windows.Forms.Button btnErase;
-        private System.Windows.Forms.GroupBox panelRightCommands;
         private System.Windows.Forms.GroupBox gpCommandsReader;
         private System.Windows.Forms.Button btnConnectToReader;
         private System.Windows.Forms.Button btnDisconnectFromReader;
@@ -470,5 +478,9 @@
         private System.Windows.Forms.Button btnWriteData;
         private System.Windows.Forms.Button btnReadData;
         private System.Windows.Forms.GroupBox gpCommandsKey;
+        private System.Windows.Forms.Button btnAuthenticate;
+        private System.Windows.Forms.Button btnChangeKey;
+        private System.Windows.Forms.Button btnReadNdef;
+        private System.Windows.Forms.Button btnSdmUncipherPicc;
     }
 }
